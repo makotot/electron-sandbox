@@ -1,5 +1,6 @@
 var app = require('app'),
   BrowserWindow = require('browser-window'),
+  Tray = require('tray'),
   client = require('electron-connect').client;
 
 require('crash-reporter').start();
@@ -12,21 +13,47 @@ app.on('window-all-closed', function () {
   }
 });
 
+
+function showWindow (win, bounds) {
+  win.setPosition(bounds.x, bounds.y);
+  win.show();
+}
+
+function hideWindow (win) {
+  win.hide();
+}
+
+var appIcon = null;
+
 app.on('ready', function () {
 
-  mainWindow = new BrowserWindow({
-    width: 500,
-    height: 400
+  // http://www.flaticon.com/free-icon/youtube-symbol_24530
+  var iconPath = __dirname + '/icons/tray.png';
+
+  appIcon = new Tray(iconPath);
+
+  appIcon.window = new BrowserWindow({
+    width: 300,
+    height: 500,
+    show: false,
+    frame: false
   });
 
-  mainWindow.loadUrl('file://' + __dirname + '/index.html');
-  client.create(mainWindow);
+  appIcon.window.loadUrl('file://' + __dirname + '/index.html');
 
-  mainWindow.openDevTools();
+  client.create(appIcon.window);
 
-  mainWindow.on('closed', function () {
-    mainWindow = null;
-  });
+  appIcon.window
+    .on('closed', function () {
+      appIcon.window = null;
+    })
+    .on('blur', function () {
+      hideWindow(appIcon.window);
+    });
 
+  appIcon
+    .on('clicked', function (e, bounds) {
+      showWindow(appIcon.window, bounds);
+    });
 });
 
