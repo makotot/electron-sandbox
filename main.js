@@ -40,6 +40,7 @@ app.on('ready', function () {
   });
 
   appIcon.window.loadUrl('file://' + __dirname + '/index.html');
+  appIcon.window.openDevTools();
 
   client.create(appIcon.window);
 
