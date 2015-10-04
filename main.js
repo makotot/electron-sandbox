@@ -3,6 +3,7 @@ var app = require('app'),
   Tray = require('tray'),
   client = require('electron-connect').client;
 
+require('electron-debug')();
 require('crash-reporter').start();
 
 var mainWindow = null;
