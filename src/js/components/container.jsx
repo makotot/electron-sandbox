@@ -1,13 +1,15 @@
+'use babel';
+
 import React from 'react';
 
-export class Container extends React.component {
+export class Container extends React.Component {
 
   render () {
     return (
       <div>
-        <input type="text" />
+        <p>Container</p>
       </div>
-    );
+    )
   }
 }
 

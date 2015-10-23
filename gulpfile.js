@@ -1,5 +1,7 @@
 var gulp = require('gulp'),
+  gulpIf = require('gulp-if'),
   babel = require('gulp-babel')
+  plumber = require('gulp-plumber'),
   watch = require('gulp-watch'),
   sass = require('gulp-sass'),
   postcss = require('gulp-postcss'),
@@ -40,8 +42,8 @@ gulp.task('style:watch', function (done) {
 gulp.task('script', function () {
   return gulp
     .src('./src/js/**/*.{js,jsx}')
+    .pipe(plumber())
     .pipe(babel({
-      stage: 0
     }))
     .pipe(gulp.dest('./dist/js'));
 });
@@ -50,8 +52,8 @@ gulp.task('script:watch', function (done) {
   gulp
     .src('./src/js/**/*.{js,jsx}')
     .pipe(watch('./src/js/**/*.{js,jsx}'))
+    .pipe(plumber())
     .pipe(babel({
-      stage: 0
     }))
     .pipe(gulp.dest('./dist/js'));
 
