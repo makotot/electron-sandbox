@@ -40,3 +40,4 @@ Video.defaultProps = {
   videoId: 'M7lc1UVf-VE',
   autoPlay: 0
 }
+

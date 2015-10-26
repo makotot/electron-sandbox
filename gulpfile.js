@@ -21,6 +21,7 @@ gulp.task('clean', function (done) {
 gulp.task('style', function () {
   return gulp
     .src('./src/scss/*.scss')
+    .pipe(plumber())
     .pipe(sass())
     .pipe(postcss([
       rucksack(),
@@ -33,6 +34,7 @@ gulp.task('style:watch', function (done) {
   gulp
     .src('./src/scss/*.scss')
     .pipe(watch('./src/scss/**/*.scss'))
+    .pipe(plumber())
     .pipe(sass())
     .pipe(postcss([
       rucksack(),
