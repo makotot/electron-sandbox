@@ -1,20 +1,21 @@
-'use babel';
-
 import React from 'react';
 
 export class Video extends React.Component {
 
-  state = {
-    videoId: videoId,
-    autoPlay: autoPlay,
-  }
+  constructor (props) {
+    super(props);
 
-  static defaultProps = {
-    videoId: '',
-    autoPlay: 0,
+    this.state = {
+      videoId: this.props.videoId,
+      autoPlay: this.props.autoPlay
+    }
   }
 
   render () {
+    const videoId = this.state.videoId;
+    const autoPlay = this.state.autoPlay;
+    const src = `http://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1&origin=http://example.com`;
+
     return (
       <div>
         <p>video component</p>
@@ -23,11 +24,16 @@ export class Video extends React.Component {
           type='text/html'
           width='640'
           height='390'
-          src='http://www.youtube.com/embed/{ this.state.videoId }?autoplay={ this.state.autoPlay }&enablejsapi=1&origin=http://example.com'
+          src={ src }
           frameBorder='0'
         >
         </iframe>
       </div>
     )
   }
+}
+
+Video.defaultProps = {
+  videoId: 'M7lc1UVf-VE',
+  autoPlay: 0
 }
