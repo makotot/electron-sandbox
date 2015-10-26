@@ -23,12 +23,12 @@ export class Video extends React.Component {
       <div>
         <p>video component</p>
         <iframe
-          id='player'
-          type='text/html'
-          width='640'
-          height='390'
+          id="player"
+          type="ext/html"
+          width="350"
+          height="200"
           src={ src }
-          frameBorder='0'
+          frameBorder="0"
         >
         </iframe>
       </div>

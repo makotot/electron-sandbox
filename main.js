@@ -28,13 +28,13 @@ var appIcon = null;
 
 app.on('ready', function () {
 
-  // http://www.flaticon.com/free-icon/youtube-symbol_24530
+  // from http://www.flaticon.com/free-icon/youtube-symbol_24530
   var iconPath = __dirname + '/icons/tray.png';
 
   appIcon = new Tray(iconPath);
 
   appIcon.window = new BrowserWindow({
-    width: 300,
+    width: 350,
     height: 500,
     show: false,
     frame: false
