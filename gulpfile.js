@@ -21,7 +21,12 @@ gulp.task('clean', function (done) {
 gulp.task('style', function () {
   return gulp
     .src('./src/scss/*.scss')
+    .pipe(plumber())
     .pipe(sass())
+    .pipe(postcss([
+      rucksack(),
+      cssnano()
+    ]))
     .pipe(gulp.dest('./dist/css'));
 });
 
@@ -29,6 +34,7 @@ gulp.task('style:watch', function (done) {
   gulp
     .src('./src/scss/*.scss')
     .pipe(watch('./src/scss/**/*.scss'))
+    .pipe(plumber())
     .pipe(sass())
     .pipe(postcss([
       rucksack(),
@@ -67,6 +73,6 @@ gulp.task('serve', ['script:watch', 'style:watch'], function () {
 
   gulp.watch(['index.html'], connect.reload);
   gulp.watch(['./src/js/**/*.{js,jsx}'], connect.reload);
-  gulp.watch(['./src/js/**/*.css'], connect.reload);
+  gulp.watch(['./src/scss/**/*.scss'], connect.reload);
 });
 
