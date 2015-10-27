@@ -76,3 +76,5 @@ gulp.task('serve', ['script:watch', 'style:watch'], function () {
   gulp.watch(['./src/scss/**/*.scss'], connect.reload);
 });
 
+gulp.task('build', ['script', 'style']);
+
