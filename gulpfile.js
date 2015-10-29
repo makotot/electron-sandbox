@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
   gulpIf = require('gulp-if'),
   babel = require('gulp-babel')
+  eslint = require('gulp-eslint'),
   plumber = require('gulp-plumber'),
   watch = require('gulp-watch'),
   sass = require('gulp-sass'),
@@ -66,7 +67,15 @@ gulp.task('script:watch', function (done) {
   done();
 });
 
-gulp.task('serve', ['script:watch', 'style:watch'], function () {
+gulp.task('lint', function () {
+  return gulp
+    .src('./src/js/**/*.{js,jsx}')
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
+
+gulp.task('serve', ['lint', 'script:watch', 'style:watch'], function () {
   connect.start();
 
   gulp.watch('main.js', connect.restart);
@@ -76,5 +85,5 @@ gulp.task('serve', ['script:watch', 'style:watch'], function () {
   gulp.watch(['./src/scss/**/*.scss'], connect.reload);
 });
 
-gulp.task('build', ['script', 'style']);
+gulp.task('build', ['lint', 'script', 'style']);
 
