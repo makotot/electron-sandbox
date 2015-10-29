@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 export class Video extends React.Component {
 
   constructor (props) {
-    super(props);
+    super(props)
 
     this.state = {
       videoId: this.props.videoId,
@@ -15,9 +15,9 @@ export class Video extends React.Component {
     const {
       videoId,
       autoPlay
-    } = this.state;
+    } = this.state
 
-    const src = `http://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1&origin=http://example.com`;
+    const src = `http://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1&origin=http://example.com`
 
     return (
       <div>
