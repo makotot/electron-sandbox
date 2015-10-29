@@ -1,4 +1,5 @@
 import React from 'react'
+import fetch from 'fetch-jsonp'
 
 export class SearchBox extends React.Component {
 
@@ -8,7 +9,6 @@ export class SearchBox extends React.Component {
 
   handleSubmit (e) {
     e.preventDefault()
-    console.log(this)
   }
 
   render () {
