@@ -17,7 +17,7 @@ export class Video extends React.Component {
       autoPlay
     } = this.state
 
-    const src = `http://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1&origin=http://example.com`
+    const src = `http://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1`
 
     return (
       <div>
