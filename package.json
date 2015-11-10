@@ -18,7 +18,7 @@
   "devDependencies": {
     "babel": "^5.8.29",
     "babel-eslint": "^4.1.4",
-    "browserify": "^11.2.0",
+    "browserify": "^12.0.1",
     "cssnano": "^3.3.2",
     "del": "^2.0.2",
     "electron-connect": "^0.3.3",
@@ -33,9 +33,12 @@
     "gulp-postcss": "^6.0.1",
     "gulp-sass": "^2.0.4",
     "gulp-watch": "^4.3.5",
+    "postcss-reporter": "^1.3.0",
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "rucksack-css": "^0.8.5",
-    "run-sequence": "^1.1.4"
+    "run-sequence": "^1.1.4",
+    "stylelint": "^2.2.0",
+    "stylelint-config-makotot": "0.0.3"
   }
 }

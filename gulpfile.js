@@ -7,8 +7,6 @@ var gulp = require('gulp'),
   sass = require('gulp-sass'),
   postcss = require('gulp-postcss'),
   del = require('del'),
-  rucksack = require('rucksack-css'),
-  cssnano = require('cssnano'),
   runSequence = require('run-sequence'),
   connect = require('electron-connect').server.create();
 
@@ -38,8 +36,10 @@ gulp.task('style:watch', function (done) {
     .pipe(plumber())
     .pipe(sass())
     .pipe(postcss([
-      rucksack(),
-      cssnano()
+      require('stylelint')(),
+      require('rucksack-css')(),
+      require('cssnano')(),
+      require('postcss-reporter')()
     ]))
     .pipe(gulp.dest('./dist/css'));
 
