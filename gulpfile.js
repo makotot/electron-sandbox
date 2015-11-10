@@ -23,8 +23,10 @@ gulp.task('style', function () {
     .pipe(plumber())
     .pipe(sass())
     .pipe(postcss([
-      rucksack(),
-      cssnano()
+      require('stylelint')(),
+      require('rucksack-css')(),
+      require('cssnano')(),
+      require('postcss-reporter')()
     ]))
     .pipe(gulp.dest('./dist/css'));
 });
