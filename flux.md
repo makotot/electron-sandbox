@@ -39,4 +39,5 @@ dispatcherのコールバックを登録することが許されるのは、stor
 
 - http://www.jackcallister.com/2015/02/26/the-flux-quick-start-guide.html
 - http://blog.andrewray.me/flux-for-stupid-people/
+- https://github.com/ruanyf/flux-for-stupid-people-demo
 

@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import { AppDispatcher } from '../dispatcher/dispatcher'
+
 import { PlayList } from './playlist'
 
 export class SearchBox extends React.Component {
@@ -34,6 +36,11 @@ export class SearchBox extends React.Component {
         return res.json()
       })
       .then((data) => {
+        //AppDispatcher.dispatch({
+        //  eventName: 'fetchItem',
+        //  items: this.createPlayList(data)
+        //})
+
         this.setState({
           result: this.createPlayList(data)
         })
