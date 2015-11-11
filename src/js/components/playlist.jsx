@@ -12,11 +12,11 @@ export class PlayList extends React.Component {
 
   render () {
     const items = this.props.items || []
-
     const itemList = items.map((item, index) => {
-      return <li key={ index }>{ item }</li>
+      return <li key={ index }>{ item.title }</li>
     })
 
+    console.log(items)
     return (
       <ul>
         { itemList }

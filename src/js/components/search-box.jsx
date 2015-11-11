@@ -47,7 +47,11 @@ export class SearchBox extends React.Component {
     const jsonItems = jsonData.items
 
     const playList = jsonItems.map((item) => {
-      return item.snippet.title
+      return {
+        videoId: item.id.videoId,
+        title: item.snippet.title,
+        thumb: item.snippet.thumbnails.default.url
+      }
     })
 
     return playList
