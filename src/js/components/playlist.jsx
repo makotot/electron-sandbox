@@ -10,17 +10,17 @@ export class PlayList extends React.Component {
     }
   }
 
-  componentWillReceiveProps () {
-    console.log(this)
-    this.setState({
-      items: this.props.items
-    })
-  }
-
   render () {
-    console.log(this.state)
+    const items = this.props.items || []
+
+    const itemList = items.map((item, index) => {
+      return <li key={ index }>{ item }</li>
+    })
+
     return (
-      <div></div>
+      <ul>
+        { itemList }
+      </ul>
     )
   }
 }

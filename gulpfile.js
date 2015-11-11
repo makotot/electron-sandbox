@@ -19,7 +19,7 @@ gulp.task('clean', function (done) {
 
 gulp.task('style', function () {
   return gulp
-    .src('./src/scss/*.scss')
+    .src('./src/scss/**/*.scss')
     .pipe(plumber())
     .pipe(sass())
     .pipe(postcss([
@@ -29,23 +29,6 @@ gulp.task('style', function () {
       require('postcss-reporter')()
     ]))
     .pipe(gulp.dest('./dist/css'));
-});
-
-gulp.task('style:watch', function (done) {
-  gulp
-    .src('./src/scss/*.scss')
-    .pipe(watch('./src/scss/**/*.scss'))
-    .pipe(plumber())
-    .pipe(sass())
-    .pipe(postcss([
-      require('stylelint')(),
-      require('rucksack-css')(),
-      require('cssnano')(),
-      require('postcss-reporter')()
-    ]))
-    .pipe(gulp.dest('./dist/css'));
-
-  done();
 });
 
 gulp.task('script', function () {
@@ -57,18 +40,6 @@ gulp.task('script', function () {
     .pipe(gulp.dest('./dist/js'));
 });
 
-gulp.task('script:watch', function (done) {
-  gulp
-    .src('./src/js/**/*.{js,jsx}')
-    .pipe(watch('./src/js/**/*.{js,jsx}'))
-    .pipe(plumber())
-    .pipe(babel({
-    }))
-    .pipe(gulp.dest('./dist/js'));
-
-  done();
-});
-
 gulp.task('lint', function () {
   return gulp
     .src('./src/js/**/*.{js,jsx}')
@@ -77,14 +48,16 @@ gulp.task('lint', function () {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('serve', ['lint', 'script:watch', 'style:watch'], function () {
+gulp.task('serve', ['lint', 'script', 'style'], function () {
   connect.start();
 
   gulp.watch('main.js', connect.restart);
 
+  gulp.watch(['./src/scss/**/*.scss'], ['style'])
+  gulp.watch(['./src/js/**/*.{js,jsx}'], ['script'])
   gulp.watch(['index.html'], connect.reload);
-  gulp.watch(['./src/js/**/*.{js,jsx}'], connect.reload);
-  gulp.watch(['./src/scss/**/*.scss'], connect.reload);
+  gulp.watch(['./dist/**/*.js'], connect.reload);
+  gulp.watch(['./dist/**/*.css'], connect.reload);
 });
 
 gulp.task('build', ['lint', 'script', 'style']);
