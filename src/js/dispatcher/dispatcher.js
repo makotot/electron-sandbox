@@ -1,12 +1,15 @@
 import { Dispatcher } from 'flux'
 import { PlayListStore } from '../stores/PlayListStore'
 
-const AppDispatcher = new Dispatcher()
+export const AppDispatcher = new Dispatcher()
 
 AppDispatcher.register((payload) => {
+  switch (payload.eventName) {
+    case 'fetch-list':
+      PlayListStore.items = payload.items
+      PlayListStore.emit('update')
+      break
+  }
 
   return true
 })
-
-
-export default AppDispatcher

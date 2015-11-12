@@ -1,7 +1,9 @@
 import { EventEmitter } from 'events'
 
-const PlayListStore = Object.assign({}, EventEmitter.prototype, {
+export const PlayListStore = Object.assign({}, EventEmitter.prototype, {
+  items: [],
 
+  getAll () {
+    return this.items
+  }
 })
-
-export default PlayListStore

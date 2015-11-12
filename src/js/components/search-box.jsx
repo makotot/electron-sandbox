@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { AppDispatcher } from '../dispatcher/dispatcher'
+import { PlayListStore } from '../stores/PlayListStore'
+import { PlayListAction } from '../actions/PlayListAction'
 
 import { PlayList } from './playlist'
 
@@ -14,6 +15,14 @@ export class SearchBox extends React.Component {
       result: null,
       value: ''
     }
+  }
+
+  componentDidMount () {
+    PlayListStore.on('update', this.updatePlayList.bind(this))
+  }
+
+  componentWillUnmount () {
+    PlayListStore.off('change')
   }
 
   handleSubmit (e) {
@@ -36,18 +45,21 @@ export class SearchBox extends React.Component {
         return res.json()
       })
       .then((data) => {
-        //AppDispatcher.dispatch({
-        //  eventName: 'fetchItem',
-        //  items: this.createPlayList(data)
-        //})
+        const list = this.createPlayList(data)
 
         this.setState({
-          result: this.createPlayList(data)
+          result: list
         })
+
+        PlayListAction.update(list)
       })
       .catch((error) => {
         console.error(error)
       })
+  }
+
+  updatePlayList () {
+    this.forceUpdate()
   }
 
   createPlayList (jsonData) {
@@ -65,6 +77,7 @@ export class SearchBox extends React.Component {
   }
 
   render () {
+    const items = PlayListStore.getAll()
 
     return (
       <div>
@@ -72,7 +85,7 @@ export class SearchBox extends React.Component {
           <input type="text" ref="searchInput" placeholder="search ..." />
           <input type="button" value="search" />
         </form>
-        <PlayList items={ this.state.result } />
+        <PlayList items={ items } />
       </div>
     )
   }
