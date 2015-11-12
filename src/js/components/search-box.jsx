@@ -45,13 +45,7 @@ export class SearchBox extends React.Component {
         return res.json()
       })
       .then((data) => {
-        const list = this.createPlayList(data)
-
-        this.setState({
-          result: list
-        })
-
-        PlayListAction.update(list)
+        PlayListAction.update(this.createPlayList(data))
       })
       .catch((error) => {
         console.error(error)
@@ -59,7 +53,9 @@ export class SearchBox extends React.Component {
   }
 
   updatePlayList () {
-    this.forceUpdate()
+    this.setState({
+      result: PlayListStore.getAll()
+    })
   }
 
   createPlayList (jsonData) {
@@ -77,15 +73,13 @@ export class SearchBox extends React.Component {
   }
 
   render () {
-    const items = PlayListStore.getAll()
-
     return (
       <div>
         <form onSubmit={ this.handleSubmit.bind(this) }>
           <input type="text" ref="searchInput" placeholder="search ..." />
           <input type="button" value="search" />
         </form>
-        <PlayList items={ items } />
+        <PlayList items={ this.state.result } />
       </div>
     )
   }
