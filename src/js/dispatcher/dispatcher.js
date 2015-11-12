@@ -1,15 +1,24 @@
 import { Dispatcher } from 'flux'
 import { PlayListStore } from '../stores/PlayListStore'
+import { PlayerStore } from '../stores/PlayerStore'
 
 export const AppDispatcher = new Dispatcher()
 
-AppDispatcher.register((payload) => {
+PlayListStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (payload.eventName) {
-    case 'fetch-list':
+    case 'update-playlist':
       PlayListStore.items = payload.items
       PlayListStore.emit('update')
       break
   }
+})
 
-  return true
+AppDispatcher.register((payload) => {
+  switch (payload.eventName) {
+    case 'update-playlist':
+      AppDispatcher.waitFor([PlayListStore.dispatchToken])
+      PlayerStore.videoId = PlayListStore.items[0].videoId
+      PlayerStore.emit('update')
+      break
+  }
 })

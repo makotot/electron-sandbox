@@ -16,7 +16,6 @@ export class PlayList extends React.Component {
       return <li key={ index }>{ item.title }</li>
     })
 
-    console.log(items)
     return (
       <ul>
         { itemList }
