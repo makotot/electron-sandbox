@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 
 import { PlayListStore } from '../stores/PlayListStore'
 import { PlayListAction } from '../actions/PlayListAction'
-import { PlayerAction } from '../actions/PlayerAction'
 import { PlayList } from './playlist'
 
 

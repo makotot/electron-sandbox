@@ -55,6 +55,6 @@ export class Video extends React.Component {
 
 Video.defaultProps = {
   videoId: 'M7lc1UVf-VE',
-  autoPlay: 0
+  autoPlay: 1
 }
 

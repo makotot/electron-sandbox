@@ -7,5 +7,12 @@ export const PlayerAction = {
       eventName: 'update-player',
       videoId
     })
+  },
+
+  select (videoId = '') {
+    AppDispatcher.dispatch({
+      eventName: 'select-player',
+      videoId
+    })
   }
 }

@@ -20,5 +20,11 @@ AppDispatcher.register((payload) => {
       PlayerStore.videoId = PlayListStore.items[0].videoId
       PlayerStore.emit('update')
       break
+
+    case 'select-player':
+      PlayerStore.videoId = payload.videoId
+      PlayerStore.emit('update')
+      break
   }
 })
+
