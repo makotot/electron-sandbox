@@ -10,13 +10,13 @@
   "author": "makotot",
   "license": "MIT",
   "dependencies": {
+    "babel-core": "^6.1.19",
     "electron-prebuilt": "^0.34.3",
     "flux": "^2.1.1",
     "react": "^0.14.2",
     "react-dom": "^0.14.2"
   },
   "devDependencies": {
-    "babel": "^6.0.15",
     "babel-eslint": "^4.1.5",
     "babel-plugin-transform-object-assign": "^6.1.4",
     "babel-preset-es2015": "^6.1.4",
