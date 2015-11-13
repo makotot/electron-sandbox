@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+.search-box {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  padding: 10px 0;
+
+  &__field  {
+    display: table-cell;
+    width: 70%;
+    height: 20px;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    border-bottom: 1px solid #ccc;
+
+    &:focus {
+      border-bottom: 1px solid #ddd;
+    }
+  }
+
+  &__btn  {
+    display: table-cell;
+    width: calc(30% - 10px);
+    margin: 0 0 0 10px;
+    border: 0;
+    outline: 0;
+  }
+}
