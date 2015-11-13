@@ -1,5 +1,8 @@
 import React from 'react'
 
+import { PlayerStore } from '../stores/PlayerStore'
+import { PlayerAction } from '../actions/PlayerAction'
+
 export class Video extends React.Component {
 
   constructor (props) {
@@ -9,6 +12,20 @@ export class Video extends React.Component {
       videoId: this.props.videoId,
       autoPlay: this.props.autoPlay
     }
+  }
+
+  componentDidMount () {
+    PlayerStore.on('update', this.updatePlayer.bind(this))
+  }
+
+  componentWillUnmount () {
+    PlayListStore.off('update')
+  }
+
+  updatePlayer () {
+    this.setState({
+      videoId: PlayerStore.getVideo()
+    })
   }
 
   render () {
@@ -38,6 +55,6 @@ export class Video extends React.Component {
 
 Video.defaultProps = {
   videoId: 'M7lc1UVf-VE',
-  autoPlay: 0
+  autoPlay: 1
 }
 
