@@ -3,6 +3,7 @@ import React from 'react'
 import { PlayerStore } from '../stores/PlayerStore'
 import { PlayerAction } from '../actions/PlayerAction'
 
+
 export class Video extends React.Component {
 
   constructor (props) {

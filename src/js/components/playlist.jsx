@@ -13,6 +13,12 @@ export class PlayList extends React.Component {
     }
   }
 
+  componentDidMount () {
+  }
+
+  componentWillUnmount () {
+  }
+
   playItem (videoId) {
     console.log(videoId)
     PlayerAction.select(videoId)
