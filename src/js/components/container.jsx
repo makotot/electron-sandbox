@@ -8,7 +8,6 @@ export class Container extends React.Component {
   render () {
     return (
       <div>
-        <p>Container</p>
         <PlayListBox />
         <Video
           videoId="8HkVHbJZeWY"

@@ -38,7 +38,6 @@ export class Video extends React.Component {
 
     return (
       <div>
-        <p>video component</p>
         <iframe
           id="player"
           type="ext/html"
