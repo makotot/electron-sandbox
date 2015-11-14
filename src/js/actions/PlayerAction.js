@@ -7,8 +7,8 @@ let player
 window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady () {
   player = new YT.Player('player', {
     events: {
-      'onReady': onPlayerReady,
-      'onStateChange': onPlayerStateChange
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange
     }
   });
 }
