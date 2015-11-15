@@ -15,12 +15,42 @@ export class Video extends React.Component {
     }
   }
 
+  initYoutubeApi () {
+    let player
+
+    window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady () {
+      player = new YT.Player('player', {
+        videoId: PlayerStore.getVideo(),
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange
+        }
+      });
+    }
+
+    window.onPlayerReady = function onPlayerReady () {
+    }
+
+    window.onPlayerStateChange = function onPlayerStateChange (event) {
+      if (event.data === YT.PlayerState.ENDED) {
+        PlayerAction.next()
+      }
+    }
+  }
+
   componentDidMount () {
     PlayerStore.on('update', this.updatePlayer.bind(this))
   }
 
   componentWillUnmount () {
     PlayListStore.off('update')
+  }
+
+  componentWillUpdate (nextProps, nextState) {
+    this.initYoutubeApi()
+  }
+
+  componentDidUpdate () {
   }
 
   updatePlayer () {
@@ -57,4 +87,3 @@ Video.defaultProps = {
   videoId: 'M7lc1UVf-VE',
   autoPlay: 1
 }
-

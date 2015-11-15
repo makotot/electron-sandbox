@@ -15,7 +15,6 @@ PlayListStore.dispatchToken = AppDispatcher.register((payload) => {
 })
 
 AppDispatcher.register((payload) => {
-  console.log(payload)
   switch (payload.eventName) {
     case 'update-playlist':
       AppDispatcher.waitFor([PlayListStore.dispatchToken])

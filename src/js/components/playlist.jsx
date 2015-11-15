@@ -20,7 +20,6 @@ export class PlayList extends React.Component {
   }
 
   playItem (videoId) {
-    console.log(videoId)
     PlayerAction.select(videoId)
   }
 
