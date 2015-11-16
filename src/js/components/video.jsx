@@ -13,20 +13,20 @@ export class Video extends React.Component {
       videoId: this.props.videoId,
       autoPlay: this.props.autoPlay
     }
+
+    this.player = null
   }
 
-  initYoutubeApi () {
-    let player
-
-    window.onYouTubeIframeAPIReady = function onYouTubeIframeAPIReady () {
-      player = new YT.Player('player', {
+  callYoutubeApi () {
+    window.onYouTubeIframeAPIReady = (function onYouTubeIframeAPIReady () {
+      this.player = new YT.Player('player', {
         videoId: PlayerStore.getVideo(),
         events: {
           onReady: onPlayerReady,
           onStateChange: onPlayerStateChange
         }
       });
-    }
+    }).bind(this)
 
     window.onPlayerReady = function onPlayerReady () {
     }
@@ -39,9 +39,8 @@ export class Video extends React.Component {
   }
 
   componentDidMount () {
+    this.callYoutubeApi()
     PlayerStore.on('update', this.updatePlayer.bind(this))
-    console.log(this)
-    this.initYoutubeApi()
   }
 
   componentWillUnmount () {
@@ -62,6 +61,10 @@ export class Video extends React.Component {
       videoId,
       autoPlay
     } = this.state
+
+    if (this.player) {
+      this.player.loadVideoById(videoId)
+    }
 
     const src = `https://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1`
 
