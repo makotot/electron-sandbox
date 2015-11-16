@@ -40,14 +40,12 @@ export class Video extends React.Component {
 
   componentDidMount () {
     PlayerStore.on('update', this.updatePlayer.bind(this))
+    console.log(this)
+    this.initYoutubeApi()
   }
 
   componentWillUnmount () {
     PlayListStore.off('update')
-  }
-
-  componentWillUpdate (nextProps, nextState) {
-    this.initYoutubeApi()
   }
 
   componentDidUpdate () {
@@ -65,7 +63,7 @@ export class Video extends React.Component {
       autoPlay
     } = this.state
 
-    const src = `http://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1`
+    const src = `https://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1`
 
     return (
       <div>
