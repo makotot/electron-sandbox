@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { PlayerStore } from '../stores/PlayerStore'
+import { PlayListStore } from '../stores/PlayListStore'
 import { PlayerAction } from '../actions/PlayerAction'
 
 
@@ -31,11 +32,14 @@ export class Video extends React.Component {
     window.onPlayerReady = function onPlayerReady () {
     }
 
-    window.onPlayerStateChange = function onPlayerStateChange (event) {
+    window.onPlayerStateChange = (function onPlayerStateChange (event) {
       if (event.data === YT.PlayerState.ENDED) {
-        PlayerAction.next()
+        let nextVideoId = PlayListStore.getNext(this.state.videoId)
+        console.log(nextVideoId)
+
+        this.player.loadVideoById(nextVideoId)
       }
-    }
+    }).bind(this)
   }
 
   componentDidMount () {
@@ -45,9 +49,6 @@ export class Video extends React.Component {
 
   componentWillUnmount () {
     PlayListStore.off('update')
-  }
-
-  componentDidUpdate () {
   }
 
   updatePlayer () {
