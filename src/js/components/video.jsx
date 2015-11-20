@@ -15,7 +15,7 @@ export class Video extends React.Component {
       autoPlay: this.props.autoPlay
     }
 
-    this.player = null
+    //this.player = null
   }
 
   callYoutubeApi () {
@@ -25,36 +25,44 @@ export class Video extends React.Component {
       return
     }
 
-    window.onYouTubeIframeAPIReady = (function onYouTubeIframeAPIReady () {
-      this.player = new YT.Player('player', {
-        videoId: videoId,
-        events: {
-          onReady: onPlayerReady,
-          onStateChange: onPlayerStateChange
-        }
-      });
-    }).bind(this)
+    //window.onYouTubeIframeAPIReady = (function () {
+    //  console.log(this)
+    //  this.player = new YT.Player('player', {
+    //    videoId: videoId,
+    //    events: {
+    //      onReady: function () {
+    //        console.log(this)
+    //      },
+    //      onStateChange: onPlayerStateChange
+    //    }
+    //  })
+    //}).bind(this)
 
-    window.onPlayerReady = function onPlayerReady () {
-    }
+    //function onPlayerReady () {
+    //  console.log(this)
+    //}
 
-    window.onPlayerStateChange = (function onPlayerStateChange (event) {
-      if (event.data === YT.PlayerState.ENDED) {
-        let nextVideoId = PlayListStore.getNext(this.state.videoId)
-        console.log(nextVideoId)
+    //let onPlayerStateChange = (function (event) {
+    //  if (event.data === YT.PlayerState.ENDED) {
+    //    let nextVideoId = PlayListStore.getNext(this.state.videoId)
+    //    console.log(nextVideoId)
 
-        this.player.loadVideoById(nextVideoId)
-      }
-    }).bind(this)
+    //    this.player.loadVideoById(nextVideoId)
+    //  }
+    //}).bind(this)
   }
 
   componentDidMount () {
-    this.callYoutubeApi()
     PlayerStore.on('update', this.updatePlayer.bind(this))
   }
 
   componentWillUnmount () {
     PlayListStore.off('update')
+  }
+
+  componentDidUpdate (prevProps, prevState) {
+    console.log(window.player)
+    window.player.loadVideoById(PlayerStore.getVideo())
   }
 
   updatePlayer () {
@@ -69,12 +77,13 @@ export class Video extends React.Component {
       autoPlay
     } = this.state
 
-    if (this.player && videoId) {
-      this.player.loadVideoById()
-    }
+    //if (this.player && videoId) {
+    //  this.player.loadVideoById(videoId)
+    //}
+    //this.callYoutubeApi()
 
     const src = `https://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1`
-    const video = videoId ? <iframe id="player" type="ext/html" width="350" height="200" src={ src } frameBorder="0"></iframe> : ''
+    const video = videoId ? <iframe id="player" type="text/html" width="350" height="200" src={ src } frameBorder="0"></iframe> : ''
 
     return (
       <div>
