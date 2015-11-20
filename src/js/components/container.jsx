@@ -10,7 +10,7 @@ export class Container extends React.Component {
       <div className="container">
         <PlayListBox />
         <Video
-          videoId="8HkVHbJZeWY"
+          videoId=""
           autoPlay="0"
         />
       </div>

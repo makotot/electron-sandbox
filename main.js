@@ -40,7 +40,7 @@ app.on('ready', function () {
     frame: false
   });
 
-  appIcon.window.loadUrl('file://' + __dirname + '/index.html');
+  appIcon.window.loadURL('file://' + __dirname + '/index.html');
   appIcon.window.openDevTools();
 
   client.create(appIcon.window);
@@ -54,7 +54,7 @@ app.on('ready', function () {
     });
 
   appIcon
-    .on('clicked', function (e, bounds) {
+    .on('click', function (e, bounds) {
       showWindow(appIcon.window, bounds);
     });
 });
