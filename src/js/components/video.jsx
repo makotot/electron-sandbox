@@ -1,7 +1,9 @@
 import React from 'react'
 
 import { PlayerStore } from '../stores/PlayerStore'
+import { PlayListStore } from '../stores/PlayListStore'
 import { PlayerAction } from '../actions/PlayerAction'
+
 
 export class Video extends React.Component {
 
@@ -14,12 +16,44 @@ export class Video extends React.Component {
     }
   }
 
+  callYoutubeApi () {
+    window.onYouTubeIframeAPIReady = function () {
+      window.player = new YT.Player('player', {
+        videoId: '',
+        width: 350,
+        height: 250,
+        events: {
+          onReady: function () {
+            console.log(this)
+          },
+          onStateChange: function () {
+          }
+        }
+      })
+    }
+
+    function onPlayerReady () {
+      console.log(this)
+    }
+
+    //    let onPlayerStateChange = (function (event) {
+    //      if (event.data === YT.PlayerState.ENDED) {
+    //        let nextVideoId = PlayListStore.getNext(this.state.videoId)
+    //        console.log(nextVideoId)
+    //      }
+    //    }).bind(this)
+  }
+
   componentDidMount () {
-    PlayerStore.on('update', this.updatePlayer.bind(this))
+    PlayListStore.on('update', this.updatePlayer.bind(this))
+    this.callYoutubeApi()
   }
 
   componentWillUnmount () {
     PlayListStore.off('update')
+  }
+
+  componentDidUpdate (prevProps, prevState) {
   }
 
   updatePlayer () {
@@ -34,26 +68,14 @@ export class Video extends React.Component {
       autoPlay
     } = this.state
 
-    const src = `http://www.youtube.com/embed/${ videoId }?autoplay=${ autoPlay }&enablejsapi=1`
-
     return (
-      <div>
-        <iframe
-          id="player"
-          type="ext/html"
-          width="350"
-          height="200"
-          src={ src }
-          frameBorder="0"
-        >
-        </iframe>
+      <div id="player">
       </div>
     )
   }
 }
 
 Video.defaultProps = {
-  videoId: 'M7lc1UVf-VE',
+  videoId: '',
   autoPlay: 1
 }
-

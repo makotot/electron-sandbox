@@ -2,6 +2,7 @@ import { Dispatcher } from 'flux'
 import { PlayListStore } from '../stores/PlayListStore'
 import { PlayerStore } from '../stores/PlayerStore'
 
+
 export const AppDispatcher = new Dispatcher()
 
 PlayListStore.dispatchToken = AppDispatcher.register((payload) => {
@@ -23,6 +24,11 @@ AppDispatcher.register((payload) => {
 
     case 'select-player':
       PlayerStore.videoId = payload.videoId
+      PlayerStore.emit('update')
+      break
+
+    case 'next-player':
+      PlayerStore.videoId = PlayListStore.items[1].videoId
       PlayerStore.emit('update')
       break
   }

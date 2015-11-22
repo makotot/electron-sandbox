@@ -38,14 +38,20 @@ export class SearchBox extends React.Component {
     this.setState({
       result: PlayListStore.getAll()
     })
+    const idList = PlayListStore.getAll().map((item) => {
+      return item.videoId
+    })
+    console.log(idList)
+    window.player.loadPlaylist(idList, 0)
+    window.player.setLoop(true);
   }
 
   render () {
     return (
-      <div>
+      <div className="search-box">
         <form onSubmit={ this.handleSubmit.bind(this) }>
-          <input type="text" ref="searchInput" placeholder="search ..." />
-          <input type="button" value="search" />
+          <input type="text" className="search-box__field" ref="searchInput" placeholder="search ..." />
+          <input type="button" className="search-box__btn" value="search" />
         </form>
         <PlayList items={ this.state.result } />
       </div>
