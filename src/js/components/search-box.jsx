@@ -41,7 +41,6 @@ export class SearchBox extends React.Component {
     const idList = PlayListStore.getAll().map((item) => {
       return item.videoId
     })
-    console.log(idList)
     window.player.loadPlaylist(idList, 0)
     window.player.setLoop(true);
   }

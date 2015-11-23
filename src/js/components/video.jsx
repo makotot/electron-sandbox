@@ -31,17 +31,6 @@ export class Video extends React.Component {
         }
       })
     }
-
-    function onPlayerReady () {
-      console.log(this)
-    }
-
-    //    let onPlayerStateChange = (function (event) {
-    //      if (event.data === YT.PlayerState.ENDED) {
-    //        let nextVideoId = PlayListStore.getNext(this.state.videoId)
-    //        console.log(nextVideoId)
-    //      }
-    //    }).bind(this)
   }
 
   componentDidMount () {
