@@ -15,6 +15,14 @@ app.on('window-all-closed', function () {
 });
 
 
+function toggleWindow (win, bounds) {
+  if (win && win.isVisible()) {
+    hideWindow(win);
+  } else {
+    showWindow(win, bounds);
+  }
+}
+
 function showWindow (win, bounds) {
   win.setPosition(bounds.x, bounds.y);
   win.show();
@@ -55,7 +63,7 @@ app.on('ready', function () {
 
   appIcon
     .on('click', function (e, bounds) {
-      showWindow(appIcon.window, bounds);
+      toggleWindow(appIcon.window, bounds);
     });
 });
 
