@@ -28,8 +28,10 @@ export class PlayList extends React.Component {
   }
 
   updatePlayList () {
+    const items = PlayListStore.getAll()
+
     this.setState({
-      result: PlayListStore.getAll()
+      result: items
     })
 
     const idList = PlayListStore.getAllId()

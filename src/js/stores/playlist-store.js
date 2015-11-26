@@ -3,6 +3,8 @@ import { EventEmitter } from 'events'
 export const PlayListStore = Object.assign({}, EventEmitter.prototype, {
   items: [],
 
+  query: null,
+
   itemIndex: 0,
 
   getAll () {
@@ -17,6 +19,10 @@ export const PlayListStore = Object.assign({}, EventEmitter.prototype, {
 
   getIndexItem (index) {
     return this.items[index]
+  },
+
+  getQuery () {
+    return this.query
   }
 
 })
