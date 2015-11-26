@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Video } from './video'
-import { PlayListBox } from './playlist-box'
+import { PlayList } from './playlist'
 import { SearchBox } from './search-box'
 
 export class Container extends React.Component {
@@ -13,6 +13,9 @@ export class Container extends React.Component {
         <Video
           autoPlay="0"
         />
+        <div className="layout-playlist">
+          <PlayList />
+        </div>
       </div>
     )
   }

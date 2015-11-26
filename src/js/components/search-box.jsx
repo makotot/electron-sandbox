@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 
 import { PlayListStore } from '../stores/PlayListStore'
 import { PlayListAction } from '../actions/PlayListAction'
-import { PlayList } from './playlist'
 
 
 export class SearchBox extends React.Component {
@@ -18,15 +17,9 @@ export class SearchBox extends React.Component {
   }
 
   componentDidMount () {
-    PlayListStore
-      .on('update', this.updatePlayList.bind(this))
-      .on('select', this.selectPlayListItem.bind(this))
   }
 
   componentWillUnmount () {
-    PlayListStore
-      .off('change')
-      .off('select')
   }
 
   handleSubmit (e) {
@@ -38,23 +31,6 @@ export class SearchBox extends React.Component {
     PlayListAction.updateList(query)
   }
 
-  updatePlayList () {
-    this.setState({
-      result: PlayListStore.getAll()
-    })
-
-    const idList = PlayListStore.getAllId()
-
-    window.player.loadPlaylist(idList, 0)
-    window.player.setLoop(true);
-  }
-
-  selectPlayListItem () {
-    const idList = PlayListStore.getAllId()
-
-    window.player.loadPlaylist(idList, PlayListStore.itemIndex)
-  }
-
   render () {
     return (
       <div className="search-box">
@@ -62,10 +38,6 @@ export class SearchBox extends React.Component {
         <form onSubmit={ this.handleSubmit.bind(this) }>
           <input type="text" className="search-box__field" ref="searchInput" placeholder="search ..." />
         </form>
-
-        <div className="layout-playlist">
-          <PlayList items={ this.state.result } />
-        </div>
 
       </div>
     )
