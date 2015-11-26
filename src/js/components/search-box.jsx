@@ -61,7 +61,6 @@ export class SearchBox extends React.Component {
 
         <form onSubmit={ this.handleSubmit.bind(this) }>
           <input type="text" className="search-box__field" ref="searchInput" placeholder="search ..." />
-          <input type="button" className="search-box__btn" value="search" />
         </form>
 
         <PlayList items={ this.state.result } />
