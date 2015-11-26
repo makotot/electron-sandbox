@@ -9,13 +9,15 @@ export class Container extends React.Component {
   render () {
     return (
       <div className="container">
+
         <SearchBox />
-        <Video
-          autoPlay="0"
-        />
+
+        <Video />
+
         <div className="layout-playlist">
           <PlayList />
         </div>
+
       </div>
     )
   }
