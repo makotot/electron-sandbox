@@ -11,7 +11,6 @@ export class Container extends React.Component {
       <div className="container">
         <SearchBox />
         <Video
-          videoId=""
           autoPlay="0"
         />
       </div>
