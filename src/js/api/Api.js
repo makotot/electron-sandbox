@@ -4,7 +4,10 @@ const param = {
   type: 'video',
   videoDefinition: 'high',
   maxResults: 30,
-  categoryId: 10
+  categoryId: 10,
+  syndicated: true,
+  embeddable: true,
+  license: 'any'
 }
 const apiURL = 'https://www.googleapis.com/youtube/v3/search'
 const apiKey = 'AIzaSyAkh76HFpCEsXiAwi1BtnVZL5hTEFoPkdA'
@@ -13,7 +16,7 @@ const apiKey = 'AIzaSyAkh76HFpCEsXiAwi1BtnVZL5hTEFoPkdA'
 export const Api = {
 
   get (query) {
-    const url = `${ apiURL }?part=${ param.part }&order=${ param.order }&q=${ query }&type=${ param.type }+&videoDefinition=${ param.videoDefinition }&key=${ apiKey }&maxResults=${ param.maxResults }&videoCategoryId=${ param.categoryId }&videoSyndicated=true&videoEmbeddable=true&videoLicense=youtube`
+    const url = `${ apiURL }?part=${ param.part }&order=${ param.order }&q=${ query }&type=${ param.type }+&videoDefinition=${ param.videoDefinition }&key=${ apiKey }&maxResults=${ param.maxResults }&videoCategoryId=${ param.categoryId }&videoSyndicated=${ param.syndicated }&videoEmbeddable=${ param.embeddable }&videoLicense=${ param.license }`
 
     return new Promise((resolve, reject) => {
       fetch(url)

@@ -24,7 +24,6 @@ export class Video extends React.Component {
         height: 250,
         events: {
           onReady: function () {
-            console.log(this)
           },
           onStateChange: function () {
           }
@@ -57,8 +56,14 @@ export class Video extends React.Component {
       autoPlay
     } = this.state
 
+    const isVideoExist = PlayListStore.getAll() && PlayListStore.getAll().length
+
+    const style = {
+      display: isVideoExist ? '' : 'none'
+    }
+
     return (
-      <div id="player">
+      <div id="player" style={ style }>
       </div>
     )
   }
