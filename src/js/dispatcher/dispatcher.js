@@ -1,6 +1,5 @@
 import { Dispatcher } from 'flux'
 import { PlayListStore } from '../stores/PlayListStore'
-import { PlayerStore } from '../stores/PlayerStore'
 
 
 export const AppDispatcher = new Dispatcher()
@@ -20,12 +19,6 @@ AppDispatcher.register((payload) => {
     case 'select-playlist-item':
       PlayListStore.itemIndex = payload.index
       PlayListStore.emit('select')
-
-//    case 'update-playlist':
-//      AppDispatcher.waitFor([PlayListStore.dispatchToken])
-//      PlayerStore.videoId = PlayListStore.items[0].videoId
-//      PlayerStore.emit('update')
-//      break
 
   }
 })
