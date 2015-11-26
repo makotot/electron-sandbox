@@ -18,11 +18,15 @@ export class SearchBox extends React.Component {
   }
 
   componentDidMount () {
-    PlayListStore.on('update', this.updatePlayList.bind(this))
+    PlayListStore
+      .on('update', this.updatePlayList.bind(this))
+      .on('select', this.selectPlayListItem.bind(this))
   }
 
   componentWillUnmount () {
-    PlayListStore.off('change')
+    PlayListStore
+      .off('change')
+      .off('select')
   }
 
   handleSubmit (e) {
@@ -38,21 +42,30 @@ export class SearchBox extends React.Component {
     this.setState({
       result: PlayListStore.getAll()
     })
-    const idList = PlayListStore.getAll().map((item) => {
-      return item.videoId
-    })
+
+    const idList = PlayListStore.getAllId()
+
     window.player.loadPlaylist(idList, 0)
     window.player.setLoop(true);
+  }
+
+  selectPlayListItem () {
+    const idList = PlayListStore.getAllId()
+
+    window.player.loadPlaylist(idList, PlayListStore.itemIndex)
   }
 
   render () {
     return (
       <div className="search-box">
+
         <form onSubmit={ this.handleSubmit.bind(this) }>
           <input type="text" className="search-box__field" ref="searchInput" placeholder="search ..." />
           <input type="button" className="search-box__btn" value="search" />
         </form>
+
         <PlayList items={ this.state.result } />
+
       </div>
     )
   }

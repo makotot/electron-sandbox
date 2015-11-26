@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { PlayerAction } from '../actions/PlayerAction'
+import { PlayListAction } from '../actions/PlayListAction'
 
 
 export class PlayList extends React.Component {
@@ -19,8 +20,9 @@ export class PlayList extends React.Component {
   componentWillUnmount () {
   }
 
-  playItem (videoId) {
-    PlayerAction.select(videoId)
+  playItem (videoId, index) {
+    //PlayerAction.select(videoId)
+    PlayListAction.selectItem(videoId, index)
   }
 
   render () {
@@ -31,7 +33,7 @@ export class PlayList extends React.Component {
           className="playlist__item"
           key={ index }
           id={ item.videoId }
-          onClick={ this.playItem.bind(this, item.videoId) }
+          onClick={ this.playItem.bind(this, item.videoId, index) }
         >
           <div className="playlist__title">{ item.title }</div>
           <div className="playlist__thumb"><img src={ item.thumb } /></div>
