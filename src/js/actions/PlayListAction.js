@@ -27,5 +27,13 @@ export const PlayListAction = {
           items: createPlayList(data)
         })
       })
+  },
+
+  selectItem (id, index) {
+    AppDispatcher.dispatch({
+      eventName: 'select-playlist-item',
+      id,
+      index
+    })
   }
 }
