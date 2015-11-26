@@ -63,7 +63,9 @@ export class SearchBox extends React.Component {
           <input type="text" className="search-box__field" ref="searchInput" placeholder="search ..." />
         </form>
 
-        <PlayList items={ this.state.result } />
+        <div className="layout-playlist">
+          <PlayList items={ this.state.result } />
+        </div>
 
       </div>
     )
