@@ -23,6 +23,8 @@ export class Video extends React.Component {
           onReady: function () {
           },
           onStateChange: function () {
+          },
+          onError: function () {
           }
         }
       })
@@ -52,7 +54,8 @@ export class Video extends React.Component {
       autoPlay
     } = this.state
 
-    const isVideoExist = PlayListStore.getAll() && PlayListStore.getAll().length
+    const items = PlayListStore.getAll()
+    const isVideoExist = items && items.length
 
     const style = {
       display: isVideoExist ? '' : 'none'
