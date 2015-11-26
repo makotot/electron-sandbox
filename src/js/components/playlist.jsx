@@ -65,7 +65,7 @@ export class PlayList extends React.Component {
     })
 
     return (
-      <ul>
+      <ul className="playlist">
         { itemList }
       </ul>
     )
