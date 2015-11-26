@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { PlayerAction } from '../actions/PlayerAction'
-import { PlayListAction } from '../actions/PlayListAction'
-import { PlayListStore } from '../stores/PlayListStore'
+import { PlayerAction } from '../actions/player-action'
+import { PlayListAction } from '../actions/playlist-action'
+import { PlayListStore } from '../stores/playlist-store'
 
 
 export class PlayList extends React.Component {

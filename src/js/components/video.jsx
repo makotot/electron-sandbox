@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PlayListStore } from '../stores/PlayListStore'
+import { PlayListStore } from '../stores/playlist-store'
 
 
 export class Video extends React.Component {
