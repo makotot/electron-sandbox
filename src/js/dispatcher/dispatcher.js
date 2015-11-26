@@ -1,5 +1,5 @@
 import { Dispatcher } from 'flux'
-import { PlayListStore } from '../stores/PlayListStore'
+import { PlayListStore } from '../stores/playlist-store'
 
 
 export const AppDispatcher = new Dispatcher()

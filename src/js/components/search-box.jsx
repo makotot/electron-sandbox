@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { PlayListStore } from '../stores/PlayListStore'
-import { PlayListAction } from '../actions/PlayListAction'
+import { PlayListStore } from '../stores/playlist-store'
+import { PlayListAction } from '../actions/playlist-action'
 
 
 export class SearchBox extends React.Component {
