@@ -59,7 +59,9 @@ export class PlayList extends React.Component {
           onClick={ this.playItem.bind(this, item.videoId, index) }
         >
           <div className="playlist__title">{ item.title }</div>
-          <div className="playlist__thumb"><img src={ item.thumb } /></div>
+          <div className="playlist__thumb">
+            <img src={ item.thumb } />
+          </div>
         </li>
       )
     })
