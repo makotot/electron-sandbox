@@ -4,7 +4,7 @@ const param = {
   type: 'video',
   videoDefinition: 'high',
   maxResults: 30,
-  categoryId: 10,
+  categoryId: 10,// Ref: http://webstackoflove.com/youtube-data-api-v3-get-a-list-of-video-category-ids/
   syndicated: true,
   embeddable: true,
   license: 'any'
