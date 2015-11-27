@@ -19,8 +19,8 @@ PlayListStore.dispatchToken = AppDispatcher.register((payload) => {
 SearchHistoryStore.dispatchToken = AppDispatcher.register((payload) => {
   switch (payload.eventName) {
     case 'add-history':
-        SearchHistoryStore.addItem(payload.items, payload.query)
-        SearchHistoryStore.emit('add')
+      SearchHistoryStore.addItem(payload.items, payload.query)
+      SearchHistoryStore.emit('add')
       break
   }
 })
