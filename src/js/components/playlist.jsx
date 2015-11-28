@@ -36,7 +36,7 @@ export class PlayList extends React.Component {
   }
 
   addHistory () {
-    SearchHistoryAction.add(PlayListStore.getAll(), PlayListStore.getQuery())
+    SearchHistoryAction.add(PlayListStore.getQuery())
   }
 
   updatePlayList () {
