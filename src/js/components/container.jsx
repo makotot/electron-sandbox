@@ -12,11 +12,11 @@ export class Container extends React.Component {
     return (
       <div className="container">
 
-        <div>
+        <div className="sidebar">
           <SearchHistory />
         </div>
 
-        <div>
+        <div className="">
 
           <SearchBox />
 
