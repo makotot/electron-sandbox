@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import FontAwesome from 'react-fontawesome'
+
 import { SearchHistoryStore } from '../stores/search-history-store'
 import { PlayListAction } from '../actions/playlist-action'
 import { SidebarAction } from '../actions/sidebar-action'
@@ -53,6 +55,14 @@ export class SearchHistory extends React.Component {
 
     return (
       <nav>
+        <h2>
+          <FontAwesome
+            className=''
+            name='history'
+            style={ { textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' } }
+          />
+          <span style={ { marginLeft: '10px' } }>History</span>
+        </h2>
         <ul className="sidebar__list">
           { itemList }
         </ul>
