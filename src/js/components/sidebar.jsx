@@ -44,6 +44,7 @@ export class Sidebar extends React.Component {
           <a href="#" className="btn" onClick={ this.handleClick.bind(this) }>
             <FontAwesome
               className=''
+              size='2x'
               name='times'
               style={ { textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' } }
             />
