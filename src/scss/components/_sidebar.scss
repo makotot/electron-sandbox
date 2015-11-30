@@ -1,0 +1,36 @@
+@charset "utf-8";
+
+.sidebar  {
+
+  $base-color: #f77171;
+
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -200px;
+  background-color: $base-color;
+  color: #fff;
+  width: 200px;
+  z-index: 1;
+  transition: 0.07s;
+
+  &__list {
+  }
+
+  &__list-item  {
+  }
+
+  &__list-item-link {
+    display: block;
+    width: 100%;
+    padding: 6px;
+    color: #fff;
+    text-decoration: none;
+
+    &:hover {
+      border-left: 5px solid $base-color;
+      background-color: darken($base-color, 10%);
+      font-weight: bold;
+    }
+  }
+}

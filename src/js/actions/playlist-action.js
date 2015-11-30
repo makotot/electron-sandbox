@@ -24,7 +24,8 @@ export const PlayListAction = {
       .then((data) => {
         AppDispatcher.dispatch({
           eventName: 'update-playlist',
-          items: createPlayList(data)
+          items: createPlayList(data),
+          query
         })
       })
   },

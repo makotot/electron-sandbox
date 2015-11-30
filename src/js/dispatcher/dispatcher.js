@@ -1,5 +1,7 @@
 import { Dispatcher } from 'flux'
 import { PlayListStore } from '../stores/playlist-store'
+import { SearchHistoryStore } from '../stores/search-history-store'
+import { SidebarStore } from '../stores/sidebar-store'
 
 
 export const AppDispatcher = new Dispatcher()
@@ -9,7 +11,17 @@ PlayListStore.dispatchToken = AppDispatcher.register((payload) => {
     case 'update-playlist':
       PlayListStore.items = payload.items
       PlayListStore.itemIndex = 0
+      PlayListStore.query = payload.query
       PlayListStore.emit('update')
+      break
+  }
+})
+
+SearchHistoryStore.dispatchToken = AppDispatcher.register((payload) => {
+  switch (payload.eventName) {
+    case 'add-history':
+      SearchHistoryStore.addItem(payload.query)
+      SearchHistoryStore.emit('add')
       break
   }
 })
@@ -19,7 +31,12 @@ AppDispatcher.register((payload) => {
     case 'select-playlist-item':
       PlayListStore.itemIndex = payload.index
       PlayListStore.emit('select')
+      break
 
+    case 'toggle-sidebar':
+      SidebarStore.toggle()
+      SidebarStore.emit('toggle')
+      break
   }
 })
 

@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.btn  {
+  $base-color: #f77171;
+
+  display: block;
+  padding: 5px;
+  background-color: #fff;
+  color: $base-color;
+  cursor: pointer;
+  text-decoration: none;
+}

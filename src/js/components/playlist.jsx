@@ -3,6 +3,7 @@ import React from 'react'
 import { PlayerAction } from '../actions/player-action'
 import { PlayListAction } from '../actions/playlist-action'
 import { PlayListStore } from '../stores/playlist-store'
+import { SearchHistoryAction } from '../actions/search-history-action'
 
 
 export class PlayList extends React.Component {
@@ -17,7 +18,14 @@ export class PlayList extends React.Component {
 
   componentDidMount () {
     PlayListStore
-      .on('update', this.updatePlayList.bind(this))
+      .on('update', () => {
+        this.updatePlayList()
+
+        // TODO: rewrite it without using setTimeout
+        setTimeout(() => {
+          this.addHistory()
+        }, 1)
+      })
       .on('select', this.selectPlayListItem.bind(this))
   }
 
@@ -27,9 +35,15 @@ export class PlayList extends React.Component {
       .off('select')
   }
 
+  addHistory () {
+    SearchHistoryAction.add(PlayListStore.getQuery())
+  }
+
   updatePlayList () {
+    const items = PlayListStore.getAll()
+
     this.setState({
-      result: PlayListStore.getAll()
+      result: items
     })
 
     const idList = PlayListStore.getAllId()
@@ -59,7 +73,9 @@ export class PlayList extends React.Component {
           onClick={ this.playItem.bind(this, item.videoId, index) }
         >
           <div className="playlist__title">{ item.title }</div>
-          <div className="playlist__thumb"><img src={ item.thumb } /></div>
+          <div className="playlist__thumb">
+            <img src={ item.thumb } />
+          </div>
         </li>
       )
     })
