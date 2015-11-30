@@ -45,7 +45,8 @@ app.on('ready', function () {
     width: 400,
     height: 500,
     show: false,
-    frame: false
+    frame: false,
+    resizable: false
   });
 
   appIcon.window.loadURL('file://' + __dirname + '/index.html');

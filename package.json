@@ -1,7 +1,7 @@
 {
   "name": "electron-sandbox",
   "version": "0.0.1",
-  "description": "",
+  "description": "sandbox",
   "main": "main.js",
   "scripts": {
     "start": "gulp serve",
@@ -27,6 +27,7 @@
     "del": "^2.1.0",
     "electron-connect": "^0.3.3",
     "electron-debug": "^0.5.1",
+    "electron-packager": "^5.1.1",
     "eslint-config-makotot": "0.0.5",
     "eslint-plugin-react": "^3.10.0",
     "gulp": "^3.9.0",
