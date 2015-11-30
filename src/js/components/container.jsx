@@ -4,6 +4,8 @@ import { Video } from './video'
 import { PlayList } from './playlist'
 import { SearchBox } from './search-box'
 import { SearchHistory } from './search-history'
+import { Navigation } from './navigation'
+import { Sidebar } from './sidebar'
 
 
 export class Container extends React.Component {
@@ -12,11 +14,13 @@ export class Container extends React.Component {
     return (
       <div className="container">
 
-        <div className="sidebar">
+        <Sidebar>
           <SearchHistory />
-        </div>
+        </Sidebar>
 
         <div className="">
+
+          <Navigation />
 
           <SearchBox />
 

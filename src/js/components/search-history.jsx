@@ -25,10 +25,6 @@ export class SearchHistory extends React.Component {
   addHistory () {
     let items = SearchHistoryStore.getItems()
 
-    items = items.filter((item, index) => {
-      return items.indexOf(item) === index
-    })
-
     this.setState({
       items
     })

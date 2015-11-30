@@ -1,6 +1,7 @@
 import { Dispatcher } from 'flux'
 import { PlayListStore } from '../stores/playlist-store'
 import { SearchHistoryStore } from '../stores/search-history-store'
+import { SidebarStore } from '../stores/sidebar-store'
 
 
 export const AppDispatcher = new Dispatcher()
@@ -30,6 +31,11 @@ AppDispatcher.register((payload) => {
     case 'select-playlist-item':
       PlayListStore.itemIndex = payload.index
       PlayListStore.emit('select')
+      break
+
+    case 'toggle-sidebar':
+      SidebarStore.toggle()
+      SidebarStore.emit('toggle')
       break
   }
 })

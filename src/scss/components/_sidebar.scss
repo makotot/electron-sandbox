@@ -1,0 +1,12 @@
+@charset "utf-8";
+
+.sidebar  {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: -200px;
+  background-color: #f77171;
+  color: #fff;
+  width: 200px;
+  z-index: 1;
+}
