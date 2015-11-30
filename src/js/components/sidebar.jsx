@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SidebarStore } from '../stores/sidebar-store'
+import { SidebarAction } from '../actions/sidebar-action'
 
 
 export class Sidebar extends React.Component {
@@ -27,12 +28,20 @@ export class Sidebar extends React.Component {
     })
   }
 
+  handleClick (e) {
+    e.preventDefault()
+    SidebarAction.toggle()
+  }
+
   render () {
     const sidebarClass = `sidebar${ this.state.toggleStatus ? ' is-sidebar-opened' : '' }`
-    console.log(sidebarClass)
 
     return (
       <div className={ sidebarClass }>
+        <div>
+          <a href="#" onClick={ this.handleClick.bind(this) }>&gt;&gt;</a>
+        </div>
+
         { this.props.children }
       </div>
     )
