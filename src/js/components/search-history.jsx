@@ -35,8 +35,8 @@ export class SearchHistory extends React.Component {
   }
 
   render () {
-    const items = this.state.items || []
-    const itemList = this.state.items.map((item, index) => {
+    const items = SearchHistoryStore.getItems() || []
+    const itemList = items.map((item, index) => {
       return (
         <li key={ index }>{ item }</li>
       )
@@ -44,7 +44,9 @@ export class SearchHistory extends React.Component {
 
     return (
       <nav>
-        { itemList }
+        <ul>
+          { itemList }
+        </ul>
       </nav>
     )
   }
