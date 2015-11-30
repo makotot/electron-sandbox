@@ -19,8 +19,15 @@ export class SearchHistory extends React.Component {
   }
 
   addHistory () {
+    let items = SearchHistoryStore.getItems()
+
+    items = items.filter((item, index) => {
+      return items.indexOf(item) === index
+    })
+    console.log(items)
+
     this.setState({
-      items: SearchHistoryStore.getItems()
+      items
     })
   }
 
@@ -28,7 +35,7 @@ export class SearchHistory extends React.Component {
     const items = this.state.items || []
     const itemList = this.state.items.map((item, index) => {
       return (
-        <li key={ index }>{ item.query }</li>
+        <li key={ index }>{ item }</li>
       )
     })
 

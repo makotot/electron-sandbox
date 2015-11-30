@@ -5,9 +5,7 @@ export const SearchHistoryStore = Object.assign({}, EventEmitter.prototype, {
   items: [],
 
   addItem (query) {
-    this.items.push({
-      query
-    })
+    this.items.unshift(query)
   },
 
   getItems () {
