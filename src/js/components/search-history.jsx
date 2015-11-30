@@ -34,15 +34,15 @@ export class SearchHistory extends React.Component {
     const items = SearchHistoryStore.getItems() || []
     const itemList = items.map((item, index) => {
       return (
-        <li key={ index }>
-          <a href="#">{ item }</a>
+        <li key={ index } className="sidebar__list-item">
+          <a href="#" className="sidebar__list-item-link">{ item }</a>
         </li>
       )
     })
 
     return (
       <nav>
-        <ul>
+        <ul className="sidebar__list">
           { itemList }
         </ul>
       </nav>
