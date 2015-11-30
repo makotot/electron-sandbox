@@ -39,7 +39,7 @@ export class Sidebar extends React.Component {
     return (
       <div className={ sidebarClass }>
         <div>
-          <a href="#" onClick={ this.handleClick.bind(this) }>&gt;&gt;</a>
+          <a href="#" className="btn" onClick={ this.handleClick.bind(this) }>&gt;&gt;</a>
         </div>
 
         { this.props.children }

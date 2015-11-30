@@ -22,7 +22,7 @@ export class Navigation extends React.Component {
       <nav>
         <ul>
           <li>
-            <a href="#" onClick={ this.handleClick.bind(this) }>&lt;&lt;</a>
+            <a href="#" className="btn" onClick={ this.handleClick.bind(this) }>&lt;&lt;</a>
           </li>
         </ul>
       </nav>
