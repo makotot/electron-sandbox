@@ -18,7 +18,7 @@ export class Container extends React.Component {
           <SearchHistory />
         </Sidebar>
 
-        <div className="">
+        <div>
 
           <Navigation />
 

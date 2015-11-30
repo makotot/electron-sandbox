@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 
 import { SearchHistoryStore } from '../stores/search-history-store'
 import { PlayListAction } from '../actions/playlist-action'
+import { SidebarAction } from '../actions/sidebar-action'
 
 
 export class SearchHistory extends React.Component {
@@ -37,6 +38,7 @@ export class SearchHistory extends React.Component {
     const targetQuery = ReactDOM.findDOMNode(e.target).innerHTML
 
     PlayListAction.updateList(targetQuery)
+    SidebarAction.toggle()
   }
 
   render () {
