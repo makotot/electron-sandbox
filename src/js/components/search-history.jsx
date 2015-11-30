@@ -1,6 +1,8 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 import { SearchHistoryStore } from '../stores/search-history-store'
+import { PlayListAction } from '../actions/playlist-action'
 
 
 export class SearchHistory extends React.Component {
@@ -30,12 +32,19 @@ export class SearchHistory extends React.Component {
     })
   }
 
+  handleClick (e) {
+    e.preventDefault()
+    const targetQuery = ReactDOM.findDOMNode(e.target).innerHTML
+
+    PlayListAction.updateList(targetQuery)
+  }
+
   render () {
     const items = SearchHistoryStore.getItems() || []
     const itemList = items.map((item, index) => {
       return (
         <li key={ index } className="sidebar__list-item">
-          <a href="#" className="sidebar__list-item-link">{ item }</a>
+          <a href="#" className="sidebar__list-item-link" onClick={ this.handleClick.bind(this) }>{ item }</a>
         </li>
       )
     })
