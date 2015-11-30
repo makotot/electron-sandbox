@@ -17,7 +17,7 @@ export class Video extends React.Component {
     window.onYouTubeIframeAPIReady = function () {
       window.player = new YT.Player('player', {
         videoId: '',
-        width: 350,
+        width: 400,
         height: 250,
         events: {
           onReady: function () {

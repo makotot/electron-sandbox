@@ -42,7 +42,7 @@ app.on('ready', function () {
   appIcon = new Tray(iconPath);
 
   appIcon.window = new BrowserWindow({
-    width: 350,
+    width: 400,
     height: 500,
     show: false,
     frame: false
