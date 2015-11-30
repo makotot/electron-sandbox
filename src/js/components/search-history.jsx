@@ -18,13 +18,16 @@ export class SearchHistory extends React.Component {
       .on('add', this.addHistory.bind(this))
   }
 
+  componentWillUnmount () {
+    SearchHistoryStore.off('add')
+  }
+
   addHistory () {
     let items = SearchHistoryStore.getItems()
 
     items = items.filter((item, index) => {
       return items.indexOf(item) === index
     })
-    console.log(items)
 
     this.setState({
       items
