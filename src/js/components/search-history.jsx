@@ -55,7 +55,7 @@ export class SearchHistory extends React.Component {
 
     return (
       <nav>
-        <h2>
+        <h2 className="sidebar__headline">
           <FontAwesome
             className=''
             name='history'

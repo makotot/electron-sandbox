@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 .sidebar  {
-
   $base-color: #f77171;
 
   position: fixed;
@@ -11,9 +10,29 @@
   background-color: $base-color;
   color: #fff;
   width: 400px;
-  padding: 6px;
+  padding: 10px;
   z-index: 1;
   transition: 0.1s;
+
+  &__nav  {
+    display: table;
+  }
+
+  &__nav-item {
+    display: table-cell;
+  }
+
+  &__main {
+    margin: 10px 0 0;
+  }
+
+  &__headline {
+    margin: 0;
+  }
+
+  &__headline + &__list {
+    margin: 10px 0 0;
+  }
 
   &__list {
   }
@@ -33,5 +52,8 @@
       background-color: darken($base-color, 10%);
       font-weight: bold;
     }
+  }
+
+  &__close  {
   }
 }

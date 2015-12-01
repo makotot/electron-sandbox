@@ -1,11 +1,17 @@
 @charset "utf-8";
 
 .btn  {
-  $base-color: #f77171;
+  $color-red: #f77171;
+  $color-white: #fff;
 
   display: block;
-  background-color: #fff;
-  color: $base-color;
+  background-color: $color-white;
+  color: $color-red;
   cursor: pointer;
   text-decoration: none;
+
+  &--reversal {
+    background-color: $color-red;
+    color: $color-white;
+  }
 }
