@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import FontAwesome from 'react-fontawesome'
+
 import { PlayListStore } from '../stores/playlist-store'
 import { PlayListAction } from '../actions/playlist-action'
 
@@ -36,7 +38,15 @@ export class SearchBox extends React.Component {
       <div className="search-box">
 
         <form onSubmit={ this.handleSubmit.bind(this) }>
-          <input type="text" className="search-box__field" ref="searchInput" placeholder="search ..." />
+          <label className="search-box__label">
+            <FontAwesome
+              className='search-box__icon'
+              size='2x'
+              name='search'
+              style={ { textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' } }
+            />
+            <input type="text" className="search-box__field" ref="searchInput" placeholder="search ..." />
+          </label>
         </form>
 
       </div>
