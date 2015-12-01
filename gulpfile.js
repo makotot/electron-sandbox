@@ -1,6 +1,5 @@
 var gulp = require('gulp'),
   gulpIf = require('gulp-if'),
-  //babel = require('gulp-babel')
   browserify = require('browserify'),
   watchify = require('watchify'),
   babelify = require('babelify'),
@@ -36,15 +35,6 @@ gulp.task('style', function () {
     .pipe(gulp.dest('./dist/css'));
 });
 
-//gulp.task('script', function () {
-//  return gulp
-//    .src('./src/js/**/*.{js,jsx}')
-//    .pipe(plumber())
-//    .pipe(babel({
-//    }))
-//    .pipe(gulp.dest('./dist/js'));
-//});
-
 gulp.task('script', function () {
   var bundler = browserify('src/js/app.jsx', {
     debug: true
@@ -54,7 +44,7 @@ gulp.task('script', function () {
     "plugins": ["transform-object-assign"]
   });
 
-  function rebundle() {
+  function rebundle () {
     bundler
       .bundle()
       .on('error', function (err) {

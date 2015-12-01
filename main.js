@@ -62,7 +62,6 @@ app.on('ready', function () {
     resizable: false
   });
 
-  //appIcon.window.loadURL('file://' + __dirname + '/index.html');
   appIcon.window.loadURL('http://127.0.0.1:8080');
   appIcon.window.openDevTools();
 
