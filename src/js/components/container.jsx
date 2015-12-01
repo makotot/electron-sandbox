@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { Video } from './video'
-import { PlayList } from './playlist'
-import { SearchBox } from './search-box'
-import { SearchHistory } from './search-history'
-import { Navigation } from './navigation'
-import { Sidebar } from './sidebar'
+import { Video } from './video.jsx'
+import { PlayList } from './playlist.jsx'
+import { SearchBox } from './search-box.jsx'
+import { SearchHistory } from './search-history.jsx'
+import { Navigation } from './navigation.jsx'
+import { Sidebar } from './sidebar.jsx'
 
 
 export class Container extends React.Component {
