@@ -58,8 +58,8 @@ app.on('ready', function () {
     width: 400,
     height: 500,
     show: false,
-    frame: false,
-    resizable: false
+    frame: false//,
+    //resizable: false
   });
 
   appIcon.window.loadURL('http://127.0.0.1:8080');

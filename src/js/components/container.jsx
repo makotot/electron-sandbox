@@ -29,12 +29,14 @@ export class Container extends React.Component {
             </div>
           </header>
 
-          <div className="layout-under-header">
-            <Video />
-          </div>
+          <div className="contents">
+            <div className="layout-under-header">
+              <Video />
+            </div>
 
-          <div className="layout-main-section">
-            <PlayList />
+            <div className="layout-main-section">
+              <PlayList />
+            </div>
           </div>
 
           <footer>

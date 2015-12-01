@@ -53,7 +53,6 @@
     text-decoration: none;
 
     &:hover {
-      border-left: 5px solid $base-color;
       background-color: darken($base-color, 10%);
       font-weight: bold;
     }

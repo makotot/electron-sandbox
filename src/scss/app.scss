@@ -4,9 +4,6 @@
   "base/base";
 
 @import
-  "utils/utils";
-
-@import
   "layouts/main-section",
   "layouts/under-header";
 
@@ -14,6 +11,7 @@
   "components/container",
   "components/header",
   "components/sidebar",
+  "components/contents",
   "components/video",
   "components/playlist",
   "components/search-box",
