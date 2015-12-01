@@ -45,7 +45,7 @@ export class SearchBox extends React.Component {
               name='search'
               style={ { textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' } }
             />
-            <input type="text" className="search-box__field" ref="searchInput" placeholder="search ..." />
+            <input type="text" className="search-box__field" ref="searchInput" placeholder="Search" />
           </label>
         </form>
 

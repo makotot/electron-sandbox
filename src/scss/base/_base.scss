@@ -20,3 +20,7 @@ ul, ol  {
   padding: 0;
   list-style-type: none;
 }
+
+input::-webkit-input-placeholder  {
+  color: #c3c3c3;
+}

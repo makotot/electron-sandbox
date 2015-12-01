@@ -4,10 +4,11 @@
   "base/base";
 
 @import
-  "layouts/playlist";
+  "layouts/main-section";
 
 @import
   "components/container",
+  "components/header",
   "components/sidebar",
   "components/video",
   "components/playlist",

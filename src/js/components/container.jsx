@@ -20,13 +20,20 @@ export class Container extends React.Component {
 
         <div>
 
-          <Navigation />
+          <div className="header">
+            <div className="header__column">
+              <Navigation />
+            </div>
+            <div className="header__column">
+              <SearchBox />
+            </div>
+          </div>
 
-          <SearchBox />
+          <div className="layout-main-section">
+            <Video />
+          </div>
 
-          <Video />
-
-          <div className="layout-playlist">
+          <div className="layout-main-section">
             <PlayList />
           </div>
 
