@@ -1,6 +1,11 @@
 var gulp = require('gulp'),
   gulpIf = require('gulp-if'),
-  babel = require('gulp-babel')
+  //babel = require('gulp-babel')
+  browserify = require('browserify'),
+  watchify = require('watchify'),
+  babelify = require('babelify'),
+  source = require('vinyl-source-stream'),
+  buffer = require('vinyl-buffer'),
   eslint = require('gulp-eslint'),
   plumber = require('gulp-plumber'),
   watch = require('gulp-watch'),
@@ -31,14 +36,42 @@ gulp.task('style', function () {
     .pipe(gulp.dest('./dist/css'));
 });
 
+//gulp.task('script', function () {
+//  return gulp
+//    .src('./src/js/**/*.{js,jsx}')
+//    .pipe(plumber())
+//    .pipe(babel({
+//    }))
+//    .pipe(gulp.dest('./dist/js'));
+//});
+
 gulp.task('script', function () {
-  return gulp
-    .src('./src/js/**/*.{js,jsx}')
-    .pipe(plumber())
-    .pipe(babel({
-    }))
-    .pipe(gulp.dest('./dist/js'));
-});
+  var bundler = browserify('src/js/app.jsx', {
+    debug: true
+  })
+  .transform(babelify, {
+    "presets": ["es2015", "react"],
+    "plugins": ["transform-object-assign"]
+  });
+
+  function rebundle() {
+    bundler
+      .bundle()
+      .on('error', function (err) {
+        console.error(err); this.emit('end');
+      })
+      .pipe(source('app.js'))
+      .pipe(buffer())
+      .pipe(gulp.dest('./dist/js'));
+  }
+
+  bundler.on('update', function () {
+    console.log('-> bundling...');
+    rebundle();
+  });
+
+  rebundle();
+})
 
 gulp.task('lint', function () {
   return gulp
