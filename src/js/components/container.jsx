@@ -29,7 +29,7 @@ export class Container extends React.Component {
             </div>
           </div>
 
-          <div className="layout-main-section">
+          <div className="layout-under-header">
             <Video />
           </div>
 
