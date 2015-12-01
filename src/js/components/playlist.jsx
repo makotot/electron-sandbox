@@ -60,8 +60,11 @@ export class PlayList extends React.Component {
   selectPlayListItem () {
     const idList = PlayListStore.getAllId()
 
+    this.setState({
+      result: PlayListStore.getAll()
+    })
+
     window.player.loadPlaylist(idList, PlayListStore.itemIndex)
-    this.scrollToTop()
   }
 
   playItem (videoId, index) {
@@ -70,10 +73,14 @@ export class PlayList extends React.Component {
 
   render () {
     const items = PlayListStore.getAll() || []
+    const currentIndex = PlayListStore.getCurrentIndex()
+
     const itemList = items.map((item, index) => {
+      let itemClassName = `playlist__item${ index === currentIndex ? ' is-item-selected' : '' }`
+
       return (
         <li
-          className="playlist__item"
+          className={ itemClassName }
           key={ index }
           id={ item.videoId }
           onClick={ this.playItem.bind(this, item.videoId, index) }
