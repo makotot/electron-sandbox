@@ -59,7 +59,6 @@ export class SearchHistory extends React.Component {
           <FontAwesome
             className=''
             name='history'
-            style={ { textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' } }
           />
           <span style={ { marginLeft: '10px' } }>History</span>
         </h2>
