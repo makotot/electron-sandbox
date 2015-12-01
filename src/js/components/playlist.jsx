@@ -39,6 +39,10 @@ export class PlayList extends React.Component {
     SearchHistoryAction.add(PlayListStore.getQuery())
   }
 
+  scrollToTop () {
+    window.scrollTo(0, 0)
+  }
+
   updatePlayList () {
     const items = PlayListStore.getAll()
 
@@ -50,12 +54,14 @@ export class PlayList extends React.Component {
 
     window.player.loadPlaylist(idList, 0)
     window.player.setLoop(true);
+    this.scrollToTop()
   }
 
   selectPlayListItem () {
     const idList = PlayListStore.getAllId()
 
     window.player.loadPlaylist(idList, PlayListStore.itemIndex)
+    this.scrollToTop()
   }
 
   playItem (videoId, index) {
