@@ -16,7 +16,7 @@ var gulp = require('gulp'),
 
 
 gulp.task('clean', function (done) {
-  del(['./dist'], function () {
+  del(['./dist']).then(function () {
     done();
   });
 });
@@ -71,7 +71,9 @@ gulp.task('lint', function () {
     .pipe(eslint.failAfterError());
 });
 
-gulp.task('serve', ['lint', 'script', 'style'], function () {
+gulp.task('serve', function () {
+  runSequence('clean', ['lint', 'script', 'style']);
+
   connect.start();
 
   gulp.watch('main.js', connect.restart);
@@ -83,5 +85,7 @@ gulp.task('serve', ['lint', 'script', 'style'], function () {
   gulp.watch(['./dist/**/*.css'], connect.reload);
 });
 
-gulp.task('build', ['lint', 'script', 'style']);
+gulp.task('build', function () {
+  runSequence('clean', ['lint', 'script', 'style']);
+});
 
