@@ -20,14 +20,14 @@ export class Container extends React.Component {
 
         <div>
 
-          <div className="header">
+          <header className="header">
             <div className="header__column">
               <Navigation />
             </div>
             <div className="header__column">
               <SearchBox />
             </div>
-          </div>
+          </header>
 
           <div className="layout-under-header">
             <Video />
@@ -36,6 +36,9 @@ export class Container extends React.Component {
           <div className="layout-main-section">
             <PlayList />
           </div>
+
+          <footer>
+          </footer>
 
         </div>
 
