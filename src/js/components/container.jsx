@@ -34,9 +34,7 @@ export class Container extends React.Component {
               <Video />
             </div>
 
-            <div className="layout-main-section">
-              <PlayList />
-            </div>
+            <PlayList />
           </div>
 
           <footer>
