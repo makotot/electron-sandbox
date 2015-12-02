@@ -25,6 +25,10 @@ export const PlayListStore = Object.assign({}, EventEmitter.prototype, {
     return this.itemIndex
   },
 
+  setCurrentIndex (index) {
+    this.itemIndex = index
+  },
+
   getQuery () {
     return this.query
   }

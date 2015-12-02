@@ -29,13 +29,21 @@ SearchHistoryStore.dispatchToken = AppDispatcher.register((payload) => {
 AppDispatcher.register((payload) => {
   switch (payload.eventName) {
     case 'select-playlist-item':
-      PlayListStore.itemIndex = payload.index
+      PlayListStore.setCurrentIndex(payload.index)
       PlayListStore.emit('select')
+      break
+
+    case 'update-playlist-index':
+      PlayListStore.setCurrentIndex(payload.index)
+      PlayListStore.emit('updateCurrent')
       break
 
     case 'toggle-sidebar':
       SidebarStore.toggle()
       SidebarStore.emit('toggle')
+      break
+
+    default:
       break
   }
 })

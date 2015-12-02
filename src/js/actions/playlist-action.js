@@ -36,5 +36,12 @@ export const PlayListAction = {
       id,
       index
     })
+  },
+
+  updateCurrentIndex (index) {
+    AppDispatcher.dispatch({
+      eventName: 'update-playlist-index',
+      index
+    })
   }
 }
