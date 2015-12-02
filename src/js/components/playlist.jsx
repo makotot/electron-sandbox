@@ -104,7 +104,7 @@ export class PlayList extends React.Component {
     })
 
     return (
-      <div className="playlist">
+      <div className={ 'playlist' + (items.length ? '' : ' is-hidden') }>
         <h3 className="playlist__headline">
           <FontAwesome
             className=''
