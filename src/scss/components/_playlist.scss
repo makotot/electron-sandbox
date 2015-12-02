@@ -4,7 +4,21 @@
 
   $color-white: #f1f1f1;
 
-  background-color: #444;
+  //background-color: #444;
+
+  &__headline {
+    margin: 0;
+    padding: 10px;
+    color: #f77171;
+    background-color: #fff;
+  }
+
+  &__headline-inner {
+    margin: 0 0 0 10px;
+  }
+
+  &__items  {
+  }
 
   &__item {
     display: table;
@@ -14,7 +28,7 @@
     background-color: $color-white;
 
     &:hover {
-      background-color: lighten($color-white, 10%);
+      background-color: darken($color-white, 5%);
     }
   }
 

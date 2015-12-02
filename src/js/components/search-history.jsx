@@ -60,7 +60,7 @@ export class SearchHistory extends React.Component {
             className=''
             name='history'
           />
-          <span style={ { marginLeft: '10px' } }>History</span>
+          <span className="sidebar__headline-inner">History</span>
         </h2>
         <ul className="sidebar__list">
           { itemList }

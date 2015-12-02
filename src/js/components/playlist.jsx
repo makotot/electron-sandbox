@@ -1,5 +1,7 @@
 import React from 'react'
 
+import FontAwesome from 'react-fontawesome'
+
 import { PlayerAction } from '../actions/player-action'
 import { PlayListAction } from '../actions/playlist-action'
 import { PlayListStore } from '../stores/playlist-store'
@@ -102,9 +104,18 @@ export class PlayList extends React.Component {
     })
 
     return (
-      <ul className="playlist">
-        { itemList }
-      </ul>
+      <div className="playlist">
+        <h3 className="playlist__headline">
+          <FontAwesome
+            className=''
+            name='list'
+          />
+          <span className="playlist__headline-inner">Playlist</span>
+        </h3>
+        <ul className="playlist__items">
+          { itemList }
+        </ul>
+      </div>
     )
   }
 }
