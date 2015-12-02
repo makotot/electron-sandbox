@@ -63,13 +63,6 @@ export class Video extends React.Component {
       <div className="video">
         <div id="player" className={ isVideoExist ? '' : 'is-hidden' }>
         </div>
-        <div className={ 'video__frame' + (isVideoExist ? 'is-hidden' : '') }>
-          <FontAwesome
-            className=''
-            size='3x'
-            name='youtube-play'
-          />
-        </div>
       </div>
     )
   }
