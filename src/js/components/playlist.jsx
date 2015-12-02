@@ -27,12 +27,14 @@ export class PlayList extends React.Component {
         }, 1)
       })
       .on('select', this.selectPlayListItem.bind(this))
+      .on('updateCurrent', this.forceRender.bind(this))
   }
 
   componentWillUnmount () {
     PlayListStore
       .off('change')
       .off('select')
+      .off('updateCurrent')
   }
 
   addHistory () {
@@ -65,6 +67,12 @@ export class PlayList extends React.Component {
     })
 
     window.player.loadPlaylist(idList, PlayListStore.itemIndex)
+  }
+
+  forceRender () {
+    this.setState({
+      result: PlayListStore.getAll()
+    })
   }
 
   playItem (videoId, index) {

@@ -3,6 +3,7 @@ import React from 'react'
 import FontAwesome from 'react-fontawesome'
 
 import { PlayListStore } from '../stores/playlist-store'
+import { PlayListAction } from '../actions/playlist-action'
 
 
 export class Video extends React.Component {
@@ -24,7 +25,10 @@ export class Video extends React.Component {
         events: {
           onReady: function () {
           },
-          onStateChange: function () {
+          onStateChange: function (event) {
+            if (event.data === YT.PlayerState.PLAYING) {
+              PlayListAction.updateCurrentIndex(window.player.getPlaylistIndex())
+            }
           },
           onError: function () {
           }
