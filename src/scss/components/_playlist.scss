@@ -10,7 +10,7 @@
     margin: 0;
     padding: 10px;
     color: #f77171;
-    background-color: #fff;
+    background-color: lighten($color-white, 10%);
   }
 
   &__headline-inner {
