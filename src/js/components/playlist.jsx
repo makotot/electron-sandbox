@@ -112,9 +112,9 @@ export class PlayList extends React.Component {
           />
           <span className="playlist__headline-inner">Playlist</span>
         </h3>
-        <ul className="playlist__items">
+        <ol className="playlist__items">
           { itemList }
-        </ul>
+        </ol>
       </div>
     )
   }

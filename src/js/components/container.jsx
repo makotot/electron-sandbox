@@ -6,6 +6,7 @@ import { SearchBox } from './search-box.jsx'
 import { SearchHistory } from './search-history.jsx'
 import { Navigation } from './navigation.jsx'
 import { Sidebar } from './sidebar.jsx'
+import { PopularList } from './popular-list.jsx'
 
 
 export class Container extends React.Component {
@@ -32,9 +33,10 @@ export class Container extends React.Component {
           <div className="contents">
             <div className="layout-under-header">
               <Video />
+              <PopularList />
+              <PlayList />
             </div>
 
-            <PlayList />
           </div>
 
           <footer>
