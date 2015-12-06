@@ -23,6 +23,7 @@
     width: 100%;
     cursor: pointer;
     background-color: #444;
+    color: #fff;
 
     &:hover {
       background-color: lighten(#444, 5%);
@@ -38,7 +39,6 @@
     width: calc(100% - 140px);
     padding: 10px;
     height: 100px;
-    color: #fff;
     vertical-align: middle;
     text-align: left;
   }

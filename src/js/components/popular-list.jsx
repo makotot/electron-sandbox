@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 
 import FontAwesome from 'react-fontawesome'
 
@@ -44,12 +45,16 @@ export class PopularList extends React.Component {
     })
   }
 
+  handleClick (e) {
+    console.log(e.target.attributes.getNamedItem('data-title'))
+  }
+
   render () {
     const items = this.state.items
 
     const itemTemplates = items.map((item, index) => {
       return (
-        <li key={ index } className="list__item">
+        <li key={ index } className="list__item" onClick={ this.handleClick.bind(this) } data-title={ item['im:artist'].label }>
           <div className="list__title">
             <span className="list__title-inner">{ item['im:artist'].label }</span>
             <span className="list__label">{ item.category.attributes.label }</span>
