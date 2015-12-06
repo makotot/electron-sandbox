@@ -4,6 +4,7 @@ import FontAwesome from 'react-fontawesome'
 
 import { PopularListAction } from '../actions/popularlist-action'
 import { PopularListStore } from '../stores/popularlist-store'
+import { PlayListStore } from '../stores/playlist-store'
 
 export class PopularList extends React.Component {
 
@@ -11,7 +12,8 @@ export class PopularList extends React.Component {
     super(props)
 
     this.state = {
-      items: []
+      items: [],
+      isVideoExist: false
     }
   }
 
@@ -19,15 +21,26 @@ export class PopularList extends React.Component {
     PopularListAction.getItems('https://itunes.apple.com/us/rss/topsongs/limit=25/json')
 
     PopularListStore.on('load', this.loadItems.bind(this))
+    PlayListStore.on('update', this.toggle.bind(this))
   }
 
   componentWillUnmount () {
     PopularListStore.off('load')
+    PlayListStore.off('update')
   }
 
   loadItems () {
     this.setState({
       items: PopularListStore.getItems()
+    })
+  }
+
+  toggle () {
+    const playListItems = PlayListStore.getAll()
+    const isVideoExist = playListItems && playListItems.length
+
+    this.setState({
+      isVideoExist
     })
   }
 
@@ -37,14 +50,18 @@ export class PopularList extends React.Component {
     const itemTemplates = items.map((item, index) => {
       return (
         <li key={ index } className="list__item">
-          <div className="list__title">{ item['im:artist'].label }</div>
-          <div className="list__thumb"><img src={ item['im:image'][0].label } /></div>
+          <div className="list__title">
+            <span className="list__title-inner">{ item['im:artist'].label }</span>
+            <span className="list__label">{ item.category.attributes.label }</span>
+          </div>
+          <div className="list__thumb"><img src={ item['im:image'][1].label } /></div>
         </li>
       )
     })
 
+
     return (
-      <div className="list">
+      <div className={ 'list' + (this.state.isVideoExist ? ' is-hidden' : '') }>
         <h2 className="list__headline">
           <FontAwesome
             className=''
