@@ -80,13 +80,13 @@
     margin: 10px 0;
     padding: 5px;
     display: block;
-    background-color: darken($base-color, 15%);
+    background-color: #333;
     color: #fff;
     text-decoration: none;
     cursor: pointer;
 
     &:hover {
-      background-color: #333;
+      color: $base-color;
     }
   }
 
