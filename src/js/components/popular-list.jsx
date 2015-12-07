@@ -6,6 +6,7 @@ import FontAwesome from 'react-fontawesome'
 import { PopularListAction } from '../actions/popularlist-action'
 import { PopularListStore } from '../stores/popularlist-store'
 import { PlayListStore } from '../stores/playlist-store'
+import { PlayListAction } from '../actions/playlist-action.js'
 
 export class PopularList extends React.Component {
 
@@ -45,8 +46,8 @@ export class PopularList extends React.Component {
     })
   }
 
-  handleClick (e) {
-    console.log(e.target.attributes.getNamedItem('data-title'))
+  handleClick (title) {
+    PlayListAction.updateList(title)
   }
 
   render () {
@@ -54,7 +55,11 @@ export class PopularList extends React.Component {
 
     const itemTemplates = items.map((item, index) => {
       return (
-        <li key={ index } className="list__item" onClick={ this.handleClick.bind(this) } data-title={ item['im:artist'].label }>
+        <li
+          key={ index }
+          className="list__item"
+          onClick={ this.handleClick.bind(this, item['im:artist'].label) }
+        >
           <div className="list__title">
             <span className="list__title-inner">{ item['im:artist'].label }</span>
             <span className="list__label">{ item.category.attributes.label }</span>
