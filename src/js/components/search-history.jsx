@@ -62,9 +62,7 @@ export class SearchHistory extends React.Component {
     const itemList = items.map((item, index) => {
       return (
         <li key={ index } className="sidebar__list-item">
-          <a href="#" className="sidebar__list-item-link" onClick={ this.handleUpdateFromHistory.bind(this) }>
-            <span className="sidebar__list-item-text">{ item }</span>
-          </a>
+          <a href="#" className="sidebar__list-item-link" onClick={ this.handleUpdateFromHistory.bind(this) }>{ item }</a>
         </li>
       )
     })
