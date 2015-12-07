@@ -8,5 +8,11 @@ export const SearchHistoryAction = {
       eventName: 'add-history',
       query
     })
+  },
+
+  removeAll () {
+    AppDispatcher.dispatch({
+      eventName: 'remove-all-history'
+    })
   }
 }
