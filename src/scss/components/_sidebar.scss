@@ -60,10 +60,13 @@
 
   &__list-item-link {
     display: block;
+    overflow: hidden;
     width: 100%;
     padding: 10px;
     color: #fff;
     text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
     &:hover {
       background-color: #fff;
