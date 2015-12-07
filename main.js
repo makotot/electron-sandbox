@@ -22,9 +22,7 @@ require('crash-reporter').start();
 var mainWindow = null;
 
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') {
-    app.quit();
-  }
+  app.quit();
 });
 
 
@@ -56,7 +54,7 @@ app.on('ready', function () {
 
   appIcon.window = new BrowserWindow({
     width: 400,
-    height: 500,
+    height: 540,
     show: false,
     frame: false//,
     //resizable: false

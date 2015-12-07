@@ -76,6 +76,9 @@ export class SearchHistory extends React.Component {
           />
           <span className="sidebar__headline-inner">History</span>
         </h2>
+        <ul className="sidebar__list">
+          { itemList }
+        </ul>
         <a href="#" className={ 'sidebar__btn' + (items.length ? '' : ' is-hidden') } onClick={ this.handleRemoveAll.bind(this) }>
           <FontAwesome
             className=''
@@ -83,9 +86,6 @@ export class SearchHistory extends React.Component {
           />
           <span className="sidebar__btn-label">Remove All Items</span>
         </a>
-        <ul className="sidebar__list">
-          { itemList }
-        </ul>
       </nav>
     )
   }
