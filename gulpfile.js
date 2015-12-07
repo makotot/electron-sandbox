@@ -12,13 +12,22 @@ var gulp = require('gulp'),
   postcss = require('gulp-postcss'),
   del = require('del'),
   runSequence = require('run-sequence'),
+  useref = require('gulp-useref'),
+  _ = require('lodash'),
   connect = require('electron-connect').server.create();
 
 
 gulp.task('clean', function (done) {
-  del(['./dist']).then(function () {
+  del(['./app/dist']).then(function () {
     done();
   });
+});
+
+gulp.task('template', function () {
+  return gulp
+    .src('./src/index.html')
+    .pipe(useref())
+    .pipe(gulp.dest('./app/dist'));
 });
 
 gulp.task('style', function () {
@@ -32,7 +41,7 @@ gulp.task('style', function () {
       require('cssnano')(),
       require('postcss-reporter')()
     ]))
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest('./app/dist/css'));
 });
 
 gulp.task('script', function () {
@@ -52,7 +61,7 @@ gulp.task('script', function () {
       })
       .pipe(source('app.js'))
       .pipe(buffer())
-      .pipe(gulp.dest('./dist/js'));
+      .pipe(gulp.dest('./app/dist/js'));
   }
 
   bundler.on('update', function () {
@@ -71,21 +80,33 @@ gulp.task('lint', function () {
     .pipe(eslint.failAfterError());
 });
 
+gulp.task('packagejson', function (done) {
+  var pkg = _.cloneDeep('./package.json');
+
+  pkg.main = './main.js';
+
+  require('fs').writeFile('./dist/package.json', JSON.stringify(pkg), function () {
+    done();
+  });
+});
+
+
 gulp.task('serve', function () {
-  runSequence('clean', ['lint', 'script', 'style']);
+  runSequence('clean', ['lint', 'template', 'script', 'style']);
 
   connect.start();
 
-  gulp.watch('main.js', connect.restart);
+  gulp.watch('./main.js', connect.restart);
 
-  gulp.watch(['./src/scss/**/*.scss'], ['style'])
-  gulp.watch(['./src/js/**/*.{js,jsx}'], ['script'])
-  gulp.watch(['index.html'], connect.reload);
-  gulp.watch(['./dist/**/*.js'], connect.reload);
-  gulp.watch(['./dist/**/*.css'], connect.reload);
+  gulp.watch(['./src/scss/**/*.scss'], ['style']);
+  gulp.watch(['./src/index.html'], ['template']);
+  gulp.watch(['./src/js/**/*.{js,jsx}'], ['script']);
+  gulp.watch(['./app/dist/index.html'], connect.reload);
+  gulp.watch(['./app/dist/**/*.js'], connect.reload);
+  gulp.watch(['./app/dist/**/*.css'], connect.reload);
 });
 
 gulp.task('build', function () {
-  runSequence('clean', ['lint', 'script', 'style']);
+  runSequence('clean', ['lint', 'template', 'script', 'style', 'packagejson']);
 });
 

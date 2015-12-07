@@ -1,7 +1,7 @@
 var app = require('app'),
   BrowserWindow = require('browser-window'),
-  Tray = require('tray'),
-  client = require('electron-connect').client;
+  Tray = require('tray');//,
+  //client = require('electron-connect').client;
 
 
 var http = require('http');
@@ -16,7 +16,7 @@ http.createServer(function (request, response) {
 }).listen(8080);
 
 
-//require('electron-debug')();
+require('electron-debug')();
 require('crash-reporter').start();
 
 var mainWindow = null;
@@ -60,10 +60,10 @@ app.on('ready', function () {
     //resizable: false
   });
 
-  appIcon.window.loadURL('http://127.0.0.1:8080');
+  appIcon.window.loadUrl('http://127.0.0.1:8080');
   appIcon.window.openDevTools();
 
-  client.create(appIcon.window);
+  //client.create(appIcon.window);
 
   appIcon.window
     .on('closed', function () {
