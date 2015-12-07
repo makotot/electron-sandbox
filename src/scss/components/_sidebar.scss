@@ -36,6 +36,9 @@
 
   &__headline {
     margin: 0;
+    background-color: #fff;
+    color: $base-color;
+    padding: 10px;
   }
 
   &__headline-inner {
@@ -47,7 +50,6 @@
   }
 
   &__list {
-    padding: 0 20px;
   }
 
   &__list-item  {
@@ -64,7 +66,8 @@
     text-decoration: none;
 
     &:hover {
-      background-color: darken($base-color, 10%);
+      background-color: #fff;
+      color: $base-color;
       font-weight: bold;
     }
   }
@@ -73,8 +76,8 @@
     margin: 10px 0;
     padding: 5px;
     display: block;
-    background-color: #fff;
-    color: darken($base-color, 15%);
+    background-color: darken($base-color, 15%);
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
 
