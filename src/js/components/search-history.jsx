@@ -62,7 +62,9 @@ export class SearchHistory extends React.Component {
     const itemList = items.map((item, index) => {
       return (
         <li key={ index } className="sidebar__list-item">
-          <a href="#" className="sidebar__list-item-link" onClick={ this.handleUpdateFromHistory.bind(this) }>{ item }</a>
+          <a href="#" className="sidebar__list-item-link" onClick={ this.handleUpdateFromHistory.bind(this) }>
+            <span className="sidebar__list-item-text">{ item }</span>
+          </a>
         </li>
       )
     })
@@ -76,6 +78,9 @@ export class SearchHistory extends React.Component {
           />
           <span className="sidebar__headline-inner">History</span>
         </h2>
+        <ul className="sidebar__list">
+          { itemList }
+        </ul>
         <a href="#" className={ 'sidebar__btn' + (items.length ? '' : ' is-hidden') } onClick={ this.handleRemoveAll.bind(this) }>
           <FontAwesome
             className=''
@@ -83,9 +88,6 @@ export class SearchHistory extends React.Component {
           />
           <span className="sidebar__btn-label">Remove All Items</span>
         </a>
-        <ul className="sidebar__list">
-          { itemList }
-        </ul>
       </nav>
     )
   }

@@ -11,7 +11,7 @@
   background-color: $base-color;
   color: #fff;
   width: 400px;
-  min-height: 460px;
+  min-height: 500px;
   padding: 10px;
   z-index: 1;
   transition: 0.1s;
@@ -69,7 +69,7 @@
     white-space: nowrap;
 
     &:hover {
-      background-color: #fff;
+      background-color: #333;
       color: $base-color;
       font-weight: bold;
     }
