@@ -2,6 +2,7 @@ import { Dispatcher } from 'flux'
 import { PlayListStore } from '../stores/playlist-store'
 import { SearchHistoryStore } from '../stores/search-history-store'
 import { SidebarStore } from '../stores/sidebar-store'
+import { PopularListStore } from '../stores/popularlist-store'
 
 
 export const AppDispatcher = new Dispatcher()
@@ -41,6 +42,11 @@ AppDispatcher.register((payload) => {
     case 'toggle-sidebar':
       SidebarStore.toggle()
       SidebarStore.emit('toggle')
+      break
+
+    case 'init-popular-list':
+      PopularListStore.setItems(payload.items)
+      PopularListStore.emit('load');
       break
 
     default:

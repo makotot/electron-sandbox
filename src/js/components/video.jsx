@@ -64,9 +64,8 @@ export class Video extends React.Component {
     const isVideoExist = items && items.length
 
     return (
-      <div className="video">
-        <div id="player" className={ isVideoExist ? '' : 'is-hidden' }>
-        </div>
+      <div className={ 'video' + (isVideoExist ? '' : ' is-hidden') }>
+        <div id="player"></div>
       </div>
     )
   }

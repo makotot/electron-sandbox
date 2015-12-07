@@ -30,6 +30,10 @@ export class SearchBox extends React.Component {
     const input = ReactDOM.findDOMNode(this.refs.searchInput)
     const query = input.value
 
+    if (!query) {
+      return
+    }
+
     PlayListAction.updateList(query)
   }
 

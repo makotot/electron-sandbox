@@ -86,7 +86,7 @@ export class PlayList extends React.Component {
     const currentIndex = PlayListStore.getCurrentIndex()
 
     const itemList = items.map((item, index) => {
-      let itemClassName = `playlist__item${ index === currentIndex ? ' is-item-selected' : '' }`
+      let itemClassName = `list__item${ index === currentIndex ? ' is-item-selected' : '' }`
 
       return (
         <li
@@ -95,8 +95,8 @@ export class PlayList extends React.Component {
           id={ item.videoId }
           onClick={ this.playItem.bind(this, item.videoId, index) }
         >
-          <div className="playlist__title">{ item.title }</div>
-          <div className="playlist__thumb">
+          <div className="list__title">{ item.title }</div>
+          <div className="list__thumb">
             <img src={ item.thumb } />
           </div>
         </li>
@@ -104,17 +104,17 @@ export class PlayList extends React.Component {
     })
 
     return (
-      <div className={ 'playlist' + (items.length ? '' : ' is-hidden') }>
-        <h3 className="playlist__headline">
+      <div className={ 'list' + (items.length ? '' : ' is-hidden') }>
+        <h2 className="list__headline">
           <FontAwesome
             className=''
             name='list'
           />
-          <span className="playlist__headline-inner">Playlist</span>
-        </h3>
-        <ul className="playlist__items">
+          <span className="list__headline-inner">Playlist</span>
+        </h2>
+        <ol className="list__items">
           { itemList }
-        </ul>
+        </ol>
       </div>
     )
   }
