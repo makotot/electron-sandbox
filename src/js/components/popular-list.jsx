@@ -60,11 +60,13 @@ export class PopularList extends React.Component {
           className="list__item"
           onClick={ this.handleClick.bind(this, item['im:artist'].label) }
         >
-          <div className="list__title">
+          <div className="list__title list__title--narrow">
             <span className="list__title-inner">{ item['im:artist'].label }</span>
             <span className="list__label">{ item.category.attributes.label }</span>
           </div>
-          <div className="list__thumb"><img src={ item['im:image'][1].label } /></div>
+          <div className="list__thumb list__thumb--narrow">
+            <img src={ item['im:image'][1].label } className="list__thumb-img" />
+          </div>
         </li>
       )
     })

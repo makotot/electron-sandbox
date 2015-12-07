@@ -97,7 +97,7 @@ export class PlayList extends React.Component {
         >
           <div className="list__title">{ item.title }</div>
           <div className="list__thumb">
-            <img src={ item.thumb } />
+            <img src={ item.thumb } className="list__thumb-img" />
           </div>
         </li>
       )

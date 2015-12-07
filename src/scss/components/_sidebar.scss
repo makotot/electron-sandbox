@@ -18,6 +18,8 @@
 
   &__nav  {
     display: table;
+    width: 100%;
+    table-layout: fixed;
   }
 
   &__nav-item {

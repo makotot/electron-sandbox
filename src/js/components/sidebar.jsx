@@ -30,7 +30,7 @@ export class Sidebar extends React.Component {
     })
   }
 
-  handleClick (e) {
+  handleToggle (e) {
     e.preventDefault()
     SidebarAction.toggle()
   }
@@ -43,7 +43,7 @@ export class Sidebar extends React.Component {
         <nav>
           <ul className="sidebar__nav">
             <li className="sidebar__nav-item">
-              <a href="#" className="btn btn--reversal" onClick={ this.handleClick.bind(this) }>
+              <a href="#" className="btn btn--reversal" onClick={ this.handleToggle.bind(this) }>
                 <FontAwesome
                   className=''
                   size='2x'

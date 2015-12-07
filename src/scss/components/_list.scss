@@ -43,6 +43,10 @@
     text-align: left;
   }
 
+  &__title--narrow  {
+    height: 80px;
+  }
+
   &__title-inner  {
     font-size: 1.05rem;
   }
@@ -60,6 +64,14 @@
     width: 140px;
     padding: 0 10px;
     height: 100px;
+    vertical-align: middle;
+  }
+
+  &__thumb--narrow  {
+    height: 80px;
+  }
+
+  &__thumb-img  {
     vertical-align: middle;
   }
 }
