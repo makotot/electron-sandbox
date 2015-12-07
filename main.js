@@ -16,7 +16,7 @@ http.createServer(function (request, response) {
 }).listen(8080);
 
 
-require('electron-debug')();
+//require('electron-debug')();
 require('crash-reporter').start();
 
 var mainWindow = null;

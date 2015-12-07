@@ -5,7 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "gulp serve",
-    "test": "gulp build"
+    "test": "gulp build",
+    "build": "./node_modules/.bin/electron-packager . ElectronSandbox --platform=darwin --arch=x64 --version=0.34.1"
   },
   "author": "makotot",
   "license": "MIT",
