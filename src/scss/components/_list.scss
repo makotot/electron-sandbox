@@ -44,6 +44,7 @@
   }
 
   &__title--narrow  {
+    width: calc(100% - 80px);
     height: 80px;
   }
 
@@ -69,6 +70,7 @@
 
   &__thumb--narrow  {
     height: 80px;
+    width: 80px;
   }
 
   &__thumb-img  {
