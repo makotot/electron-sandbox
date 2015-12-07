@@ -49,6 +49,10 @@ AppDispatcher.register((payload) => {
       PopularListStore.emit('load');
       break
 
+    case 'remove-all-history':
+      SearchHistoryStore.removeAll()
+      SearchHistoryStore.emit('removeAll')
+
     default:
       break
   }

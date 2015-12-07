@@ -22,6 +22,10 @@ export const SearchHistoryStore = Object.assign({}, EventEmitter.prototype, {
     }
 
     return items.split(',')
+  },
+
+  removeAll () {
+    window.localStorage.removeItem(STORAGE_NAME)
   }
 
 })

@@ -66,4 +66,18 @@
       font-weight: bold;
     }
   }
+
+  &__btn  {
+    margin: 10px 0;
+    padding: 5px;
+    display: block;
+    background-color: #fff;
+    color: darken($base-color, 15%);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  &__btn-label  {
+    margin-left: 10px;
+  }
 }
