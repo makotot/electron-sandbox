@@ -1,13 +1,13 @@
 var app = require('app'),
   BrowserWindow = require('browser-window'),
-  Tray = require('tray'),
-  client = require('electron-connect').client;
+  Tray = require('tray');//,
+  //client = require('electron-connect').client;
 
 
 var http = require('http');
 var static = require('node-static');
 
-var staticServer = new static.Server('./');
+var staticServer = new static.Server('./app');
 
 http.createServer(function (request, response) {
   request.addListener('end', function () {
@@ -63,7 +63,7 @@ app.on('ready', function () {
   appIcon.window.loadURL('http://127.0.0.1:8080');
   appIcon.window.openDevTools();
 
-  client.create(appIcon.window);
+  //client.create(appIcon.window);
 
   appIcon.window
     .on('closed', function () {
