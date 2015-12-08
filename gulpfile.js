@@ -26,7 +26,7 @@ gulp.task('template', function () {
   return gulp
     .src('./src/index.html')
     .pipe(useref())
-    .pipe(gulp.dest('./app'));
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('style', function () {

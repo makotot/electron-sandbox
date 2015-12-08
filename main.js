@@ -7,7 +7,7 @@ var app = require('app'),
 var http = require('http');
 var static = require('node-static');
 
-var staticServer = new static.Server('./app');
+var staticServer = new static.Server('./dist');
 
 http.createServer(function (request, response) {
   request.addListener('end', function () {
