@@ -94,6 +94,6 @@ gulp.task('serve', function () {
 });
 
 gulp.task('build', function () {
-  runSequence('clean', ['lint', 'script', 'style']);
+  runSequence('clean', ['template', 'lint', 'script', 'style']);
 });
 
