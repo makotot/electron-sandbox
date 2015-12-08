@@ -137,3 +137,5 @@ Temporary Items
 
 
 dist/
+app/dist
+app/package.json

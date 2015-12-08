@@ -1,22 +1,24 @@
 var app = require('app'),
   BrowserWindow = require('browser-window'),
-  Tray = require('tray'),
-  client = require('electron-connect').client;
+  Tray = require('tray');//,
+  //client = require('electron-connect').client;
 
 
 var http = require('http');
 var static = require('node-static');
 
-var staticServer = new static.Server('./');
+var staticServer = new static.Server('./dist');
 
 http.createServer(function (request, response) {
   request.addListener('end', function () {
-    staticServer.serve(request, response);
+    staticServer.serve(request, response, function (err, result) {
+      console.log(err, request.headers)
+    });
   }).resume();
 }).listen(8080);
 
 
-require('electron-debug')();
+//require('electron-debug')();
 require('crash-reporter').start();
 
 var mainWindow = null;
@@ -60,10 +62,10 @@ app.on('ready', function () {
     //resizable: false
   });
 
-  appIcon.window.loadURL('http://127.0.0.1:8080');
+  appIcon.window.loadUrl('http://127.0.0.1:8080');
   appIcon.window.openDevTools();
 
-  client.create(appIcon.window);
+  //client.create(appIcon.window);
 
   appIcon.window
     .on('closed', function () {
