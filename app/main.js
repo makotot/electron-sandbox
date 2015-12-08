@@ -7,16 +7,18 @@ var app = require('app'),
 var http = require('http');
 var static = require('node-static');
 
-var staticServer = new static.Server('./');
+var staticServer = new static.Server('./dist');
 
 http.createServer(function (request, response) {
   request.addListener('end', function () {
-    staticServer.serve(request, response);
+    staticServer.serve(request, response, function (err, result) {
+      console.log(err, request.headers)
+    });
   }).resume();
 }).listen(8080);
 
 
-require('electron-debug')();
+//require('electron-debug')();
 require('crash-reporter').start();
 
 var mainWindow = null;

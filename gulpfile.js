@@ -13,7 +13,7 @@ var gulp = require('gulp'),
   del = require('del'),
   runSequence = require('run-sequence'),
   useref = require('gulp-useref'),
-  _ = require('lodash'),
+  jsonEditor = require('gulp-json-editor'),
   connect = require('electron-connect').server.create();
 
 
@@ -81,13 +81,15 @@ gulp.task('lint', function () {
 });
 
 gulp.task('packagejson', function (done) {
-  var pkg = _.cloneDeep('./package.json');
+  return gulp
+    .src('./package.json')
+    .pipe(jsonEditor(function (json) {
+      json.main = 'main.js';
+      json.devDependencies = {};
 
-  pkg.main = './main.js';
-
-  require('fs').writeFile('./dist/package.json', JSON.stringify(pkg), function () {
-    done();
-  });
+      return json;
+    }))
+    .pipe(gulp.dest('./app'));
 });
 
 
@@ -96,7 +98,7 @@ gulp.task('serve', function () {
 
   connect.start();
 
-  gulp.watch('./main.js', connect.restart);
+  gulp.watch('./app/main.js', connect.restart);
 
   gulp.watch(['./src/scss/**/*.scss'], ['style']);
   gulp.watch(['./src/index.html'], ['template']);
