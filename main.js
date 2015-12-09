@@ -1,7 +1,6 @@
 var app = require('app'),
   BrowserWindow = require('browser-window'),
-  Tray = require('tray');//,
-  //client = require('electron-connect').client;
+  Tray = require('tray');
 
 
 var http = require('http');
@@ -62,8 +61,6 @@ app.on('ready', function () {
 
   appIcon.window.loadURL('http://127.0.0.1:8080');
   appIcon.window.openDevTools();
-
-  //client.create(appIcon.window);
 
   appIcon.window
     .on('closed', function () {
