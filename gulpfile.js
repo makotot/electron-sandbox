@@ -86,9 +86,10 @@ gulp.task('serve', function () {
 
   gulp.watch('main.js', connect.restart);
 
-  gulp.watch(['./src/scss/**/*.scss'], ['style'])
-  gulp.watch(['./src/js/**/*.{js,jsx}'], ['script'])
-  gulp.watch(['index.html'], connect.reload);
+  gulp.watch(['./src/scss/**/*.scss'], ['style']);
+  gulp.watch(['./src/js/**/*.{js,jsx}'], ['script']);
+  gulp.watch(['./src/index.html'], ['template']);
+  gulp.watch(['./dist/index.html'], connect.reload);
   gulp.watch(['./dist/**/*.js'], connect.reload);
   gulp.watch(['./dist/**/*.css'], connect.reload);
 });
