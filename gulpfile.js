@@ -12,6 +12,7 @@ var gulp = require('gulp'),
   postcss = require('gulp-postcss'),
   del = require('del'),
   runSequence = require('run-sequence'),
+  useref = require('gulp-useref'),
   connect = require('electron-connect').server.create();
 
 
@@ -19,6 +20,13 @@ gulp.task('clean', function (done) {
   del(['./dist']).then(function () {
     done();
   });
+});
+
+gulp.task('template', function () {
+  return gulp
+    .src('./src/index.html')
+    .pipe(useref())
+    .pipe(gulp.dest('./dist'));
 });
 
 gulp.task('style', function () {
@@ -72,7 +80,7 @@ gulp.task('lint', function () {
 });
 
 gulp.task('serve', function () {
-  runSequence('clean', ['lint', 'script', 'style']);
+  runSequence('clean', ['template', 'lint', 'script', 'style']);
 
   connect.start();
 
@@ -86,6 +94,6 @@ gulp.task('serve', function () {
 });
 
 gulp.task('build', function () {
-  runSequence('clean', ['lint', 'script', 'style']);
+  runSequence('clean', ['template', 'lint', 'script', 'style']);
 });
 
