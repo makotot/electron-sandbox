@@ -1,6 +1,7 @@
 import React from 'react'
 
 import FontAwesome from 'react-fontawesome'
+import _ from 'lodash'
 
 import { PlayListStore } from '../stores/playlist-store'
 import { PlayListAction } from '../actions/playlist-action'
@@ -12,7 +13,8 @@ export class Video extends React.Component {
     super(props)
 
     this.state = {
-      autoPlay: this.props.autoPlay
+      autoPlay: this.props.autoPlay,
+      affix: false
     }
   }
 
@@ -40,13 +42,23 @@ export class Video extends React.Component {
   componentDidMount () {
     PlayListStore.on('update', this.updatePlayer.bind(this))
     this.callYoutubeApi()
+    window.addEventListener('scroll', _.throttle(this.affix.bind(this), 60))
   }
 
   componentWillUnmount () {
     PlayListStore.off('update')
+    window.removeEventListener('scroll')
   }
 
   componentDidUpdate (prevProps, prevState) {
+  }
+
+  affix () {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+
+    this.setState({
+      affix: scrollTop > this.props.affixPos ? true : false
+    })
   }
 
   updatePlayer () {
@@ -57,14 +69,15 @@ export class Video extends React.Component {
 
   render () {
     const {
-      autoPlay
+      autoPlay,
+      affix
     } = this.state
 
     const items = PlayListStore.getAll()
     const isVideoExist = items && items.length
 
     return (
-      <div className={ 'video' + (isVideoExist ? '' : ' is-hidden') }>
+      <div className={ 'video' + (isVideoExist ? '' : ' is-hidden') + (affix ? ' is-fixed' : '') }>
         <div id="player"></div>
       </div>
     )
@@ -72,5 +85,6 @@ export class Video extends React.Component {
 }
 
 Video.defaultProps = {
-  autoPlay: 1
+  autoPlay: 1,
+  affixPos: 100
 }
