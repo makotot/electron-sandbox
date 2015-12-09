@@ -1,6 +1,7 @@
 import React from 'react'
 
 import FontAwesome from 'react-fontawesome'
+import _ from 'lodash'
 
 import { PlayerAction } from '../actions/player-action'
 import { PlayListAction } from '../actions/playlist-action'
@@ -30,6 +31,8 @@ export class PlayList extends React.Component {
       })
       .on('select', this.selectPlayListItem.bind(this))
       .on('updateCurrent', this.forceRender.bind(this))
+
+    window.addEventListener('scroll', _.throttle(this.updateLayoutWithAffix.bind(this), 60))
   }
 
   componentWillUnmount () {
@@ -37,6 +40,8 @@ export class PlayList extends React.Component {
       .off('change')
       .off('select')
       .off('updateCurrent')
+
+    window.removeEventListener('scroll')
   }
 
   addHistory () {
@@ -81,6 +86,14 @@ export class PlayList extends React.Component {
     PlayListAction.selectItem(videoId, index)
   }
 
+  updateLayoutWithAffix () {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+
+    this.setState({
+      affix: scrollTop > this.props.affixPos ? true : false
+    })
+  }
+
   render () {
     const items = PlayListStore.getAll() || []
     const currentIndex = PlayListStore.getCurrentIndex()
@@ -104,7 +117,7 @@ export class PlayList extends React.Component {
     })
 
     return (
-      <div className={ 'list' + (items.length ? '' : ' is-hidden') }>
+      <div className={ 'list' + (items.length ? '' : ' is-hidden') + (this.state.affix ? ' is-under-affix-video' : '') }>
         <h2 className="list__headline">
           <FontAwesome
             className=''
@@ -118,4 +131,8 @@ export class PlayList extends React.Component {
       </div>
     )
   }
+}
+
+PlayList.defaultProps = {
+  affixPos: 100
 }

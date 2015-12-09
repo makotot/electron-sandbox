@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events'
-import { _ } from 'lodash'
+import _ from 'lodash'
 
 export const PopularListStore = Object.assign({}, EventEmitter.prototype, {
 
