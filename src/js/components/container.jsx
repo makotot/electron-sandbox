@@ -7,6 +7,7 @@ import { SearchHistory } from './search-history.jsx'
 import { Navigation } from './navigation.jsx'
 import { Sidebar } from './sidebar.jsx'
 import { PopularList } from './popular-list.jsx'
+import { Github } from './github.jsx'
 
 
 export class Container extends React.Component {
@@ -39,7 +40,8 @@ export class Container extends React.Component {
 
           </div>
 
-          <footer>
+          <footer className="footer">
+            <Github />
           </footer>
 
         </div>
