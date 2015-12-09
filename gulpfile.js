@@ -13,7 +13,8 @@ var gulp = require('gulp'),
   del = require('del'),
   runSequence = require('run-sequence'),
   useref = require('gulp-useref'),
-  connect = require('electron-connect').server.create();
+  connect = require('electron-connect').server.create(),
+  packager = require('electron-packager');
 
 
 gulp.task('clean', function (done) {
@@ -98,3 +99,21 @@ gulp.task('build', function () {
   runSequence('clean', ['template', 'lint', 'script', 'style']);
 });
 
+
+gulp.task('package', ['build'], function (done) {
+  packager({
+    dir: './',
+    out: './release',
+    name: 'ElectronSandbox',
+    arch: 'x64',
+    platform: 'darwin',
+    version: '0.35.4',
+    overwrite: true,
+    ignore: 'node_modules/(babel-eslint|babel-plugin-transform-object-assign|babel-preset-es2015|babel-preset-react|babelify|browserify|cssnano|del|electron-connect|eslint-config-makotot|eslint-plugin-react|gulp|gulp-babel|gulp-eslint|gulp-if|gulp-plumber|gulp-postcss|gulp-sass|gulp-useref|gulp-watch|postcss-calc|postcss-reporter|rucksack-css|run-sequence|stylelint|stylelint-config-makotot|vinyl-buffer|vinyl-source-stream|watchify)'
+  }, function (err, path) {
+    if (err) {
+      console.error(err);
+    }
+    done();
+  });
+});
