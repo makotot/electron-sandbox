@@ -60,7 +60,10 @@ app.on('ready', function () {
   });
 
   appIcon.window.loadURL('http://127.0.0.1:8080');
-  appIcon.window.openDevTools();
+
+  if (process.env.NODE_ENV === 'development') {
+    appIcon.window.openDevTools();
+  }
 
   appIcon.window
     .on('closed', function () {

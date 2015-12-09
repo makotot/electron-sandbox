@@ -4,9 +4,9 @@
   "description": "sandbox",
   "main": "main.js",
   "scripts": {
-    "start": "gulp serve",
+    "start": "NODE_ENV=development gulp serve",
     "test": "gulp build",
-    "package": "gulp build && NODE_ENV=production ./node_modules/.bin/electron-packager ./ ElectronSandbox --platform=darwin --arch=x64 --version=0.35.4 --overwrite=true --ignore=\"node_modules/(babel-eslint|babel-plugin-transform-object-assign|babel-preset-es2015|babel-preset-react|babelify|browserify|cssnano|del|electron-connect|eslint-config-makotot|eslint-plugin-react|gulp|gulp-babel|gulp-eslint|gulp-if|gulp-plumber|gulp-postcss|gulp-sass|gulp-useref|gulp-watch|postcss-calc|postcss-reporter|rucksack-css|run-sequence|stylelint|stylelint-config-makotot|vinyl-buffer|vinyl-source-stream|watchify)\""
+    "package": "gulp build && ./node_modules/.bin/electron-packager ./ ElectronSandbox --platform=darwin --arch=x64 --version=0.35.4 --overwrite=true --ignore=\"node_modules/(babel-eslint|babel-plugin-transform-object-assign|babel-preset-es2015|babel-preset-react|babelify|browserify|cssnano|del|electron-connect|eslint-config-makotot|eslint-plugin-react|gulp|gulp-babel|gulp-eslint|gulp-if|gulp-plumber|gulp-postcss|gulp-sass|gulp-useref|gulp-watch|postcss-calc|postcss-reporter|rucksack-css|run-sequence|stylelint|stylelint-config-makotot|vinyl-buffer|vinyl-source-stream|watchify)\""
   },
   "author": "makotot",
   "license": "MIT",
