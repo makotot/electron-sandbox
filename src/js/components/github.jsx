@@ -9,14 +9,9 @@ export class Github extends React.Component {
     super(props)
   }
 
-  handleClick (e) {
-    e.preventDefault()
-    //shell.openExternal('https://github.com/makotot/electron-sandbox')
-  }
-
   render () {
     return (
-      <a href="#" className="footer__link" onClick={ this.handleClick.bind(this) }>
+      <a href="https://github.com/makotot/electron-sandbox" className="footer__link">
         <FontAwesome
           className='github'
           size='2x'
