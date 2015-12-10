@@ -41,7 +41,9 @@ export class Container extends React.Component {
           </div>
 
           <footer className="footer">
-            <Github />
+            <div className="footer__inner">
+              <Github />
+            </div>
           </footer>
 
         </div>
