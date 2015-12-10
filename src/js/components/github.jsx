@@ -18,7 +18,7 @@ export class Github extends React.Component {
     return (
       <a href="#" className="footer__link" onClick={ this.handleClick.bind(this) }>
         <FontAwesome
-          className='github'
+          className=''
           size='2x'
           name='github'
         />
