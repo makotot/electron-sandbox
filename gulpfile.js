@@ -81,9 +81,9 @@ gulp.task('lint', function () {
 });
 
 gulp.task('serve', function () {
-  runSequence('clean', ['template', 'lint', 'script', 'style']);
+  runSequence('clean', ['template', 'lint', 'script', 'style'], connect.start);
 
-  connect.start();
+  //connect.start();
 
   gulp.watch('main.js', connect.restart);
 
