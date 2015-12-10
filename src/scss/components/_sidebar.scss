@@ -7,13 +7,13 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  left: -400px;
+  left: -340px;
   background-color: $base-color;
   color: #fff;
-  width: 400px;
+  width: 340px;
   min-height: 500px;
   padding: 10px;
-  z-index: 3;
+  z-index: 4;
   transition: 0.1s;
 
   &__nav  {
@@ -29,25 +29,40 @@
   }
 
   &__main {
-    margin: 10px 0 0;
-    padding: 10px 0;
-    border-top: 1px solid lighten($base-color, 10%);
+    //margin: 10px 0 0;
+    //padding: 10px 0;
+    //border-top: 1px solid lighten($base-color, 10%);
+  }
+
+  &__overlay  {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.3);
+    }
   }
 
   &__headline {
     margin: 0;
     background-color: #fff;
     color: $base-color;
-    padding: 10px;
+    padding: 10px 0;
   }
-
-  &__headline-inner {
-    margin: 0 0 0 10px;
-  }
-
-  &__headline + &__list {
-    margin: 10px 0 0;
-  }
+//
+//  &__headline-inner {
+//    margin: 0 0 0 10px;
+//  }
+//
+//  &__headline + &__list {
+//    margin: 10px 0 0;
+//  }
 
   &__list {
   }
@@ -55,9 +70,9 @@
   &__list-item  {
   }
 
-  &__list-item + &__list-item {
-    border-top: 1px solid lighten($base-color, 10%);
-  }
+//  &__list-item + &__list-item {
+//    border-top: 1px solid lighten($base-color, 10%);
+//  }
 
   &__list-item-link {
     display: block;
