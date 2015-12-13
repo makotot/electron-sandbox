@@ -37,26 +37,16 @@ export class Sidebar extends React.Component {
 
   render () {
     const sidebarClass = `sidebar${ this.state.toggleStatus ? ' is-sidebar-opened' : '' }`
+    const sidebarOverlayClass = `sidebar__overlay${ this.state.toggleStatus ? '' : ' is-hidden' }`
 
     return (
-      <div className={ sidebarClass }>
-        <nav>
-          <ul className="sidebar__nav">
-            <li className="sidebar__nav-item">
-              <a href="#" className="btn btn--reversal" onClick={ this.handleToggle.bind(this) }>
-                <FontAwesome
-                  className=''
-                  size='2x'
-                  name='chevron-left'
-                />
-              </a>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="sidebar__main">
-          { this.props.children }
+      <div>
+        <div className={ sidebarClass }>
+          <div className="sidebar__main">
+            { this.props.children }
+          </div>
         </div>
+        <div className={ sidebarOverlayClass } onClick={ this.handleToggle.bind(this) }></div>
       </div>
     )
   }
