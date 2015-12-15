@@ -108,7 +108,7 @@ gulp.task('package', ['build'], function (done) {
     arch: 'x64',
     platform: 'darwin',
     version: '0.35.4',
-    icon: './icons/app.icns',
+    icon: './icons/headphone.icns',
     overwrite: true,
     ignore: [
       'src',
