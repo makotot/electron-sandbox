@@ -12,7 +12,6 @@
   color: #fff;
   width: 340px;
   min-height: 500px;
-  padding: 10px;
   z-index: 4;
   transition: 0.1s;
 
@@ -49,7 +48,7 @@
   &__headline {
     margin: 0;
     color: #fff;
-    padding: 10px 0 0;
+    padding: 30px 20px 10px;
   }
 
   &__headline-inner {
@@ -67,7 +66,7 @@
   &__box  {
     border-top: 1px solid #f2f2f2;
     border-bottom: 1px solid #f2f2f2;
-    padding: 10px 0;
+    padding: 10px 20px;
   }
 
   &__list {
@@ -83,7 +82,7 @@
     display: block;
     overflow: hidden;
     width: 100%;
-    padding: 10px;
+    padding: 10px 20px;
     color: #fff;
     text-decoration: none;
     text-overflow: ellipsis;
@@ -97,13 +96,11 @@
   }
 
   &__btn  {
-    clear: fix;
     padding: 10px 0;
   }
 
   &__btn-inner  {
-    float: right;
-    padding: 5px;
+    padding: 20px;
     display: block;
     color: #fff;
     text-decoration: none;
