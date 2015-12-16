@@ -103,13 +103,16 @@ gulp.task('build', function () {
 gulp.task('package', ['build'], function (done) {
   packager({
     dir: './',
-    out: './release',
+    out: './',
     name: 'ElectronSandbox',
     arch: 'x64',
     platform: 'darwin',
     version: '0.36.0',
     icon: './icons/headphone.icns',
     overwrite: true,
+    asar: false,
+    prune: true,
+    'app-version': require('./package.json').version,
     ignore: [
       'src',
       'node_modules\/(babel-eslint|babel-plugin-transform-object-assign|babel-preset-es2015|babel-preset-react|babelify|browserify|cssnano|del|electron-connect|eslint-config-makotot|eslint-plugin-react|gulp|gulp-babel|gulp-eslint|gulp-if|gulp-plumber|gulp-postcss|gulp-sass|gulp-useref|gulp-watch|postcss-calc|postcss-reporter|rucksack-css|run-sequence|stylelint|stylelint-config-makotot|vinyl-buffer|vinyl-source-stream|watchify)'
@@ -122,3 +125,4 @@ gulp.task('package', ['build'], function (done) {
     done();
   });
 });
+

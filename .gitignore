@@ -140,3 +140,7 @@ dist/
 app/
 
 release/
+
+*.zip
+ElectronSandbox-darwin-x64/
+ElectronSandbox-darwin-x64.zip
