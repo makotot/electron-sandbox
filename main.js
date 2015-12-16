@@ -15,8 +15,10 @@ http.createServer(function (request, response) {
 }).listen(8080);
 
 
-require('electron-debug')();
-require('crash-reporter').start();
+if (process.env.NODE_ENV === 'development') {
+  require('electron-debug')();
+  require('crash-reporter').start();
+}
 
 var mainWindow = null;
 

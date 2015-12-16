@@ -107,7 +107,7 @@ gulp.task('package', ['build'], function (done) {
     name: 'ElectronSandbox',
     arch: 'x64',
     platform: 'darwin',
-    version: '0.35.4',
+    version: '0.36.0',
     icon: './icons/headphone.icns',
     overwrite: true,
     ignore: [
