@@ -12,7 +12,6 @@ var gulp = require('gulp'),
   postcss = require('gulp-postcss'),
   del = require('del'),
   runSequence = require('run-sequence'),
-  useref = require('gulp-useref'),
   connect = require('electron-connect').server.create(),
   packager = require('electron-packager');
 
