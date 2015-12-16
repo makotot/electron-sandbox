@@ -6,6 +6,12 @@ var app = require('app'),
 var http = require('http');
 var static = require('node-static');
 
+var connect;
+
+if (process.env.NODE_ENV === 'development') {
+  connect = require('electron-connect').client;
+}
+
 var staticServer = new static.Server('./dist');
 
 http.createServer(function (request, response) {
@@ -57,15 +63,19 @@ app.on('ready', function () {
     width: 400,
     height: 540,
     show: false,
-    frame: false//,
-    //resizable: false
+    frame: false,
+    resizable: (process.env.NODE_ENV === 'development')
   });
 
   appIcon.window.loadURL('http://127.0.0.1:8080');
 
   if (process.env.NODE_ENV === 'development') {
-    appIcon.window.openDevTools();
+    connect.create(appIcon.window);
   }
+
+//  if (process.env.NODE_ENV === 'development') {
+    appIcon.window.openDevTools();
+//  }
 
   appIcon.window
     .on('closed', function () {

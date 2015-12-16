@@ -18,17 +18,17 @@ var gulp = require('gulp'),
 
 
 gulp.task('clean', function (done) {
-  del(['./dist']).then(function () {
+  del(['./dist/css', './dist/js']).then(function () {
     done();
   });
 });
 
-gulp.task('template', function () {
-  return gulp
-    .src('./src/index.html')
-    .pipe(useref())
-    .pipe(gulp.dest('./dist'));
-});
+//gulp.task('template', function () {
+//  return gulp
+//    .src('./src/index.html')
+//    .pipe(useref())
+//    .pipe(gulp.dest('./dist'));
+//});
 
 gulp.task('style', function () {
   return gulp
@@ -81,7 +81,8 @@ gulp.task('lint', function () {
 });
 
 gulp.task('serve', function () {
-  runSequence('clean', ['template', 'lint', 'script', 'style'], connect.start);
+  //runSequence('clean', ['template', 'lint', 'script', 'style'], connect.start);
+  runSequence('clean', ['lint', 'script', 'style'], connect.start);
 
   //connect.start();
 
@@ -89,14 +90,15 @@ gulp.task('serve', function () {
 
   gulp.watch(['./src/scss/**/*.scss'], ['style']);
   gulp.watch(['./src/js/**/*.{js,jsx}'], ['script']);
-  gulp.watch(['./src/index.html'], ['template']);
+  //gulp.watch(['./src/index.html'], ['template']);
   gulp.watch(['./dist/index.html'], connect.reload);
   gulp.watch(['./dist/**/*.js'], connect.reload);
   gulp.watch(['./dist/**/*.css'], connect.reload);
 });
 
 gulp.task('build', function () {
-  runSequence('clean', ['template', 'lint', 'script', 'style']);
+  //runSequence('clean', ['template', 'lint', 'script', 'style']);
+  runSequence('clean', ['lint', 'script', 'style']);
 });
 
 
