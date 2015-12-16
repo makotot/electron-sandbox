@@ -8,7 +8,7 @@
     "dev": "NODE_ENV=development electron .",
     "test": "gulp build",
     "build": "build",
-    "package": "gulp package"
+    "package": "gulp package && zip ./ElectronSandbox-darwin-x64.zip -r ./ElectronSandbox-darwin-x64"
   },
   "author": "makotot",
   "license": "MIT",
