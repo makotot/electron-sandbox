@@ -1,21 +1,31 @@
+var isDevelopment = process.env.NODE_ENV === 'development';
+
 var app = require('app'),
   BrowserWindow = require('browser-window'),
   Tray = require('tray');
 
+var connect;
 
-var http = require('http');
-var static = require('node-static');
+if (isDevelopment) {
+  connect = require('electron-connect').client;
+}
 
-var staticServer = new static.Server('./dist');
+var express = require('express');
+var webApp = express();
+var port = 3838;
 
-http.createServer(function (request, response) {
-  request.addListener('end', function () {
-    staticServer.serve(request, response);
-  }).resume();
-}).listen(8080);
+webApp.get('/', function (req, res) {
+  res.sendfile(__dirname + '/dist/index.html');
+});
+webApp.use('/css', express.static(__dirname + '/dist/css'));
+webApp.use('/js', express.static(__dirname + '/dist/js'));
+
+var server = webApp.listen(port, function () {
+  console.log('app listening at http://%s:%s', server.address().address, server.address().port);
+});
 
 
-if (process.env.NODE_ENV === 'development') {
+if (isDevelopment) {
   require('electron-debug')();
   require('crash-reporter').start();
 }
@@ -57,13 +67,14 @@ app.on('ready', function () {
     width: 400,
     height: 540,
     show: false,
-    frame: false//,
-    //resizable: false
+    frame: false,
+    resizable: isDevelopment
   });
 
-  appIcon.window.loadURL('http://127.0.0.1:8080');
+  appIcon.window.loadURL('http://127.0.0.1:'+ port);
 
-  if (process.env.NODE_ENV === 'development') {
+  if (isDevelopment) {
+    connect.create(appIcon.window);
     appIcon.window.openDevTools();
   }
 
@@ -80,4 +91,3 @@ app.on('ready', function () {
       toggleWindow(appIcon.window, bounds);
     });
 });
-

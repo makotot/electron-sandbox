@@ -136,10 +136,10 @@ Temporary Items
 .apdisk
 
 
-dist/
-app/
+dist/css/
+dist/js/
 
-release/
+
 
 *.zip
 ElectronSandbox-darwin-x64/
