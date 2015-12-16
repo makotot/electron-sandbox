@@ -67,6 +67,8 @@ export class SearchHistory extends React.Component {
       )
     })
 
+    const history = items.length ? <ul className="sidebar__list">{ itemList }</ul> : <div className="sidebar__box">There are no items...</div>
+
     return (
       <nav>
         <h2 className="sidebar__headline">
@@ -76,9 +78,7 @@ export class SearchHistory extends React.Component {
           />
           <span className="sidebar__headline-inner">History</span>
         </h2>
-        <ul className="sidebar__list">
-          { itemList }
-        </ul>
+        { history }
         <div className="sidebar__btn">
           <a href="#" className={ 'sidebar__btn-inner' + (items.length ? '' : ' is-hidden') } onClick={ this.handleRemoveAll.bind(this) }>
             <FontAwesome
