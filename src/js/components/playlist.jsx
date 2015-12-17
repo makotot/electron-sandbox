@@ -134,5 +134,5 @@ export class PlayList extends React.Component {
 }
 
 PlayList.defaultProps = {
-  affixPos: 100
+  affixPos: 60
 }

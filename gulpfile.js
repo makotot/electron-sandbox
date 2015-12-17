@@ -104,7 +104,34 @@ gulp.task('package', ['build'], function (done) {
     'app-version': require('./package.json').version,
     ignore: [
       'src',
-      'node_modules\/(babel-eslint|babel-plugin-transform-object-assign|babel-preset-es2015|babel-preset-react|babelify|browserify|cssnano|del|electron-connect|eslint-config-makotot|eslint-plugin-react|gulp|gulp-babel|gulp-eslint|gulp-if|gulp-plumber|gulp-postcss|gulp-sass|gulp-useref|gulp-watch|postcss-calc|postcss-reporter|rucksack-css|run-sequence|stylelint|stylelint-config-makotot|vinyl-buffer|vinyl-source-stream|watchify)'
+      'node_modules/babel-eslint',
+      'node_modules/babel-plugin-transform-object-assign',
+      'node_modules/babel-preset-es2015',
+      'node_modules/babel-preset-react',
+      'node_modules/babelify',
+      'node_modules/cssnano',
+      'node_modules/del',
+      'node_modules/electron-debug',
+      'node_modules/electron-connect',
+      'node_modules/eslint-config-makotot',
+      'node_modules/eslint-plugin-react',
+      'node_modules/gulp',
+      'node_modules/gulp-babel',
+      'node_modules/gulp-eslint',
+      'node_modules/gulp-if',
+      'node_modules/gulp-plumber',
+      'node_modules/gulp-postcss',
+      'node_modules/gulp-sass',
+      'node_modules/gulp-watch',
+      'node_modules/postcss-calc',
+      'node_modules/postcss-reporter',
+      'node_modules/rucksack-css',
+      'node_modules/run-sequence',
+      'node_modules/stylelint',
+      'node_modules/stylelint-config-makotot',
+      'node_modules/vinyl-buffer',
+      'node_modules/vinyl-source-stream',
+      'node_modules/watchify'
     ]
   }, function (err, path) {
     if (err) {

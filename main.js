@@ -15,7 +15,7 @@ var webApp = express();
 var port = 3838;
 
 webApp.get('/', function (req, res) {
-  res.sendfile(__dirname + '/dist/index.html');
+  res.sendFile(__dirname + '/dist/index.html');
 });
 webApp.use('/css', express.static(__dirname + '/dist/css'));
 webApp.use('/js', express.static(__dirname + '/dist/js'));

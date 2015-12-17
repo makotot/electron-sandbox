@@ -86,5 +86,5 @@ export class Video extends React.Component {
 
 Video.defaultProps = {
   autoPlay: 1,
-  affixPos: 100
+  affixPos: 60
 }
