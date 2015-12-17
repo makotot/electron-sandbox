@@ -39,8 +39,7 @@ gulp.task('style', function () {
 gulp.task('script', function () {
   var bundler = browserify('src/js/app.jsx', {
     debug: true
-  })
-  .transform(babelify, {
+  }).transform(babelify, {
     "presets": ["es2015", "react"],
     "plugins": ["transform-object-assign"]
   });
@@ -99,8 +98,7 @@ gulp.task('package', ['build'], function (done) {
     version: '0.36.0',
     icon: './icons/headphone.icns',
     overwrite: true,
-    asar: false,
-    prune: true,
+    asar: true,
     'app-version': require('./package.json').version,
     ignore: [
       'src',
