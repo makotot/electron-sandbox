@@ -14,4 +14,11 @@
     background-color: $color-red;
     color: $color-white;
   }
+
+  &--bar  {
+
+    &:hover {
+      color: #333;
+    }
+  }
 }
