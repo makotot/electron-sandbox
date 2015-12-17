@@ -24,7 +24,7 @@ export class Navigation extends React.Component {
       <nav>
         <ul>
           <li>
-            <a href="#" className="btn" onClick={ this.handleClick.bind(this) }>
+            <a href="#" className="btn btn--bar" onClick={ this.handleClick.bind(this) }>
               <FontAwesome
                 className=''
                 size='2x'
