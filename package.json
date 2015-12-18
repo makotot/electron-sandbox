@@ -1,6 +1,6 @@
 {
   "name": "electron-sandbox",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "sandbox",
   "main": "main.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "dev": "NODE_ENV=development electron .",
     "test": "gulp lint",
     "build": "gulp build",
-    "package": "gulp package"
+    "package": "gulp package && zip ./ElectronSandbox-darwin-x64.zip -r ./ElectronSandbox-darwin-x64"
   },
   "author": "makotot",
   "license": "MIT",
