@@ -98,7 +98,7 @@ gulp.task('package', ['build'], function (done) {
     version: '0.36.0',
     icon: './icons/headphone.icns',
     overwrite: true,
-    //asar: true,
+    asar: true,
     prune: true,
     'app-version': require('./package.json').version,
     ignore: [
